@@ -1,0 +1,40 @@
+.wrapper {
+    max-width: 90%;
+    margin-inline: auto;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-block: 65px;
+    font-size: 40px;
+    gap: 8px;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+
+    &>div {
+        background-color: #F1F1F1;
+        border-radius: 22px;
+        padding: 60px;
+
+        &>h5 {
+            font-size: 35px;
+            margin-bottom: 8px;
+        }
+    }
+}
+
+.viewAll {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    
+    &>a {
+        color: black;
+    }
+}

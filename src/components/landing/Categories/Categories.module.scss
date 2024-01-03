@@ -1,0 +1,92 @@
+@use "../../../app/responsive.scss" as adaptive;
+
+.wrapper {
+    max-width: 90%;
+    margin-inline: auto;
+}
+
+.titleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+
+    &>h2 {
+        font-size: 40px;
+    }
+
+    padding-block: 65px;
+}
+
+.categories {
+    display: grid;
+    grid-template:
+        "iphone AirPods Watch" 1fr
+        "iphone Mac iPad"
+        "dyson consoles gagets";
+    ;
+    grid-gap: 20px;
+
+    &>div:not(:first-child) {
+        height: 40vh;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width: adaptive.$md) {
+    .categories {
+        grid-template:
+            "iphone AirPods"
+            "Watch Mac"
+            "dyson consoles"
+            "gagets iPad";
+        ;
+        &>div {
+            height: 40vh;
+            overflow: hidden;
+        }
+    }
+}
+@media screen and (max-width: adaptive.$sm) {
+    .categories {
+        grid-template:
+            "iphone"
+            "AirPods"
+            "Watch"
+            "Mac"
+            "dyson"
+            "consoles"
+            "gagets"
+            "iPad";
+        ;
+        &>div {
+            height: 40vh;
+            overflow: hidden;
+        }
+    }
+}
+
+.category {
+    position: relative;
+
+    border-radius: 22px;
+    background-color: #F1F1F1;
+    padding: 30px;
+
+    cursor: pointer;
+
+    &>h4 {
+        font-size: 34px;
+        font-weight: 300;
+    }
+
+    &>img {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        max-height: 80%;
+        max-width: 90%;
+        object-fit: cover;
+    }
+}

@@ -1,0 +1,28 @@
+@use '../../app/responsive.scss' as adaptive;
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #262626;
+    padding: 14px 20px;
+}
+
+@media screen and (max-width: adaptive.$md) {
+    .nav {
+        display: none;
+    }
+}
+
+
+
+.innerNav {
+    display: flex;
+    gap: 20px;
+}
+
+.link {
+    color: white;
+    text-decoration: none;
+    font-weight: 100;
+}

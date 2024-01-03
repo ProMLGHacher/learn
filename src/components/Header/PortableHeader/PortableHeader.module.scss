@@ -1,0 +1,40 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.leftSide {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.rightSide {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.search {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    margin: 0;
+}
+
+.navItem {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.phone {
+    color: black;
+}

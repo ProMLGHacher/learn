@@ -1,0 +1,54 @@
+.wrapper {
+    max-width: 90%;
+    margin-inline: auto;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-block: 65px;
+
+    &>h4 {
+        font-size: 40px;
+    }
+}
+
+.main {
+    background-image: url('/serviceback.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    color: white;
+    border-radius: 22px;
+    height: 50vh;
+    padding: 60px;
+
+    &>h4 {
+        font-size: 49px;
+        font-weight: 600;
+    }
+
+    &>h5 {
+        font-size: 25px;
+        font-weight: 400;
+    }
+
+    &>button {
+        padding: 12px 24px;
+        background-color: transparent;
+        border: 1px solid white;
+        color: white;
+        border-radius: 30px;
+        font-size: 18px;
+        font-weight: 100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
