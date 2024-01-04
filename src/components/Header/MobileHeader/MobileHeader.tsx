@@ -1,19 +1,38 @@
+'use client'
 import Image from 'next/image';
-import Link from 'next/link';
 import styles from './MobileHeader.module.scss'
+import Link from 'next/link';
+import { useCallback, useState } from 'react';
 
 const MobileHeader = () => {
+  const [active, setActive] = useState<boolean>(false)
+  
+  const burgerClickHandler = useCallback(() => {
+    setActive(true)
+  }, [])
+
+  const exitClickHandler = useCallback(() => {
+    setActive(false)
+  }, [])
+
   return (
-    <div className={styles.wrapper}>
-            <div className={styles.leftSide}>
-                <Image src={'/logo.png'} width={77} height={21.68} alt='logo' />
-            </div>
-            <div className={styles.rightSide}>
-                <button className={styles.search}><Image src={'/search.png'} alt='search' width={24} height={24} /></button>
-                <Image src={'/call.png'} alt='call' width={17} height={17} />
-                <Link className={styles.phone} href={'tel:+79878884054'} >+7 (000) 000-00-00</Link>
-            </div>
+    <>
+      <div className={`${styles.slider} ${active ? styles.active : ""}`}>
+        <button onClick={exitClickHandler}>exit</button>
+        <Link onClick={exitClickHandler} href={"#categories"}>Скролл</Link>
+      </div>
+      <div className={styles.wrapper}>
+        <div className={styles.leftSide}>
+          <button onClick={burgerClickHandler}><Image src={'/burger.svg'} width={22} height={10} alt='burger' /></button>
         </div>
+        <div className={styles.center}>
+          <Image src={'/logo.png'} width={77} height={21.68} alt='logo' />
+        </div>
+        <div className={styles.rightSide}>
+          <button><Image src={'/call.png'} alt='call' width={20} height={20} /></button>
+        </div>
+      </div>
+    </>
   )
 }
 

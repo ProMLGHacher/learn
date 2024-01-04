@@ -3,8 +3,8 @@ import styles from './Categories.module.scss'
 
 const Categories = () => {
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.titleWrapper}>
+        <div id='categories' className={styles.wrapper}>
+            <div className={styles.title}>
                 <Image src={'/browse.svg'} alt='browse icon' width={35} height={35} />
                 <h2>Лучшие устройства Apple в одном магазине</h2>
             </div>

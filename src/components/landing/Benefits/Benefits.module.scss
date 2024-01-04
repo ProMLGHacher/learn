@@ -1,3 +1,5 @@
+@use '../../../app/responsive.scss' as adaptive;
+
 .wrapper {
     max-width: 90%;
     margin-inline: auto;
@@ -7,16 +9,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 40px;
+    font-size: 3.5vw;
     gap: 10px;
 
     padding-block: 65px;
+}
+
+@media screen and (max-width: adaptive.$md) {
+    .title {
+        font-size: 4vw;
+    }
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .title {
+        font-size: 7vw;
+    }
 }
 
 .benefits {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 20px;
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .benefits {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 .benefit {
@@ -40,5 +60,17 @@
     &>p {
         font-size: 25px;
         font-weight: 400;
+    }
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .benefit {
+        padding: calc(var(--padding) * 5);
+        &>h4 {
+            font-size: 6vw;
+        }
+        &>p {
+            font-size: 20px;
+        }
     }
 }

@@ -7,13 +7,23 @@
 .leftSide {
     display: flex;
     align-items: center;
-    gap: 50px;
+    &>button {
+        padding-block: 4px;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 .rightSide {
     display: flex;
     align-items: center;
     gap: 8px;
+    &>button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 .search {
@@ -37,4 +47,32 @@
 
 .phone {
     color: black;
+}
+
+
+.slider {
+    z-index: 1;
+
+    transform: translateX(-100vw);
+    transition: transform 0.3s;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    &>a {
+        color: white;
+    }
+
+    &>button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+}
+
+.slider.active {
+    transform: translateX(0);
 }

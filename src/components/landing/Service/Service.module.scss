@@ -1,3 +1,5 @@
+@use '../../../app/responsive.scss' as adaptive;
+
 .wrapper {
     max-width: 90%;
     margin-inline: auto;
@@ -26,8 +28,8 @@
     gap: 10px;
     color: white;
     border-radius: 22px;
-    height: 50vh;
-    padding: 60px;
+    padding-block: 100px;
+    padding-inline: 60px;
 
     &>h4 {
         font-size: 49px;
@@ -50,5 +52,24 @@
         display: flex;
         align-items: center;
         gap: 8px;
+
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .main {
+        padding-inline: calc(var(--padding) * 5);
+        padding-block: 60px;
+        align-items: center;
+        &>h4 {
+            font-size: 6.7vw;
+            font-weight: 600;
+            text-align: center;
+        }
+        &>h5 {
+            font-size: 5vw;
+            text-align: center;
+        }
     }
 }

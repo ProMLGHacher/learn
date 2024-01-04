@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styles from './page.module.scss'
 import FirstSection from '@/components/landing/FirstSection/FirstSection'
 import Categories from '@/components/landing/Categories/Categories'

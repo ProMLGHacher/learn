@@ -5,7 +5,7 @@
     margin-inline: auto;
 }
 
-.titleWrapper {
+.title {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,10 +13,26 @@
 
 
     &>h2 {
-        font-size: 40px;
+        font-size: 3.5vw;
     }
 
     padding-block: 65px;
+}
+
+@media screen and (max-width: adaptive.$md) {
+    .title {
+        &>h2 {
+            font-size: 4vw;
+        }
+    }
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .title {
+        &>h2 {
+            font-size: 6vw;
+        }
+    }
 }
 
 .categories {
