@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import TopHeader from '@/components/TopHeader/TopHeader'
 import Header from '@/components/Header/Header'
-import { montserrat } from './font'
+import { SF } from './fonts/font'
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body style={{
-        fontFamily: montserrat.style.fontFamily
-      }} className={montserrat.className}>
+        fontFamily: SF.style.fontFamily
+      }} className={SF.className}>
         <TopHeader />
         <Header />
         {children}

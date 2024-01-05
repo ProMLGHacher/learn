@@ -29,6 +29,8 @@
 
 @media screen and (max-width: adaptive.$sm) {
     .title {
+        flex-direction: column;
+        text-align: center;
         &>h2 {
             font-size: 6vw;
         }

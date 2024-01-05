@@ -23,6 +23,8 @@
 
 @media screen and (max-width: adaptive.$sm) {
     .title {
+        flex-direction: column;
+        text-align: center;
         font-size: 7vw;
     }
 }
