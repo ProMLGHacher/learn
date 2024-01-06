@@ -1,0 +1,60 @@
+@use "../responsive.scss" as adaptive;
+
+.section {
+    max-width: 1920px;
+    width: 90%;
+    margin-inline: auto;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    font-size: 45px;
+    font-weight: 600;
+}
+
+.contacts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+
+    &>div {
+        border-radius: 22px;
+        background-color: #F1F1F1;
+        padding: calc(var(--padding) * 2);
+    }
+}
+
+@media screen and (max-width: adaptive.$md) {
+    .contacts { 
+        grid-template-columns: repeat(1, 1fr);
+
+        &>div {
+            padding: calc(var(--padding) * 4);
+        }
+    }
+}
+
+.smallTitle {
+    font-size: 20px;
+    font-weight: 200;
+}
+
+.workTime {
+    font-size: 24px;
+    font-weight: 200;
+}
+
+.phone {
+    font-size: 30px;
+    font-weight: 400;
+    color: black;
+}
+
+.sm {
+    font-weight: 300;
+    font-size: 25px;
+    text-decoration: underline;
+}

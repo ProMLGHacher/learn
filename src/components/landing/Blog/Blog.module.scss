@@ -1,7 +1,8 @@
 @use '../../../app/responsive.scss' as adaptive;
 
 .wrapper {
-    max-width: 90%;
+    max-width: 1920px;
+    width: 90%;
     margin-inline: auto;
 }
 
@@ -10,7 +11,7 @@
     align-items: center;
     justify-content: center;
     padding-block: 65px;
-    font-size: 3.5vw;
+    font-size: clamp(10px, 3.5vw, 50px);
     gap: 8px;
 }
 

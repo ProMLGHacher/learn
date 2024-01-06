@@ -1,7 +1,8 @@
 @use '../../../app/responsive.scss' as adaptive;
 
 .wrapper {
-    max-width: 90%;
+    max-width: 1920px;
+    width: 90%;
     margin-inline: auto;
 }
 
