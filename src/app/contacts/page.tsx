@@ -21,8 +21,9 @@ const Contacts = () => {
           <p className={styles.sm}>Whats’app</p>
           <p className={styles.sm}>Telegram</p>
         </div>
-
       </div>
+      
+      <iframe className={styles.maps} src="https://yandex.ru/map-widget/v1/?ll=55.100685%2C51.765499&mode=search&oid=1120187347&ol=biz&z=17.71"></iframe>
     </section>
   )
 }

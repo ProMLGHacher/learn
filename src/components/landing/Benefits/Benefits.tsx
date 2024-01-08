@@ -10,17 +10,17 @@ const Benefits = () => {
         </div>
         <div className={styles.benefits}>
             <div className={styles.benefit}>
-                <Image src={'/heart.svg'} width={150} height={150} alt='heart' />
+                <Image className={styles.heart} src={'/heart.svg'} width={150} height={150} alt='Клиентский сервис иконка' />
                 <h4>Клиентский сервис</h4>
                 <p>Премиальное обслуживание. Бесплатная консультация и техническая поддержка.</p>
             </div>
             <div className={styles.benefit}>
-                <Image src={'/fire.svg'} width={150} height={150} alt='heart' />
+                <Image className={styles.fire} src={'/fire.svg'} width={150} height={150} alt='Оригинальная техника иконка' />
                 <h4>Оригинальная техника</h4>
                 <p>Мы продаем только новую и оригинальную технику Apple, Гарантия на технику две недели.</p>
             </div>
             <div className={styles.benefit}>
-                <Image src={'/clock.svg'} width={150} height={150} alt='heart' />
+                <Image className={styles.clock} src={'/clock.svg'} width={150} height={150} alt='Актуальность иконка' />
                 <h4>Актуальность</h4>
                 <p>В наличии представлен весь актуальный ассортимент моделей и флагманов линейки</p>
             </div>

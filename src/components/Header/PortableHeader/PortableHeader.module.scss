@@ -33,6 +33,10 @@
 .nav {
     display: flex;
     gap: 20px;
+
+    &>a {
+        font-size: 16px;
+    }
 }
 
 .phone {

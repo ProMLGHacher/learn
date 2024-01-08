@@ -36,17 +36,12 @@
     grid-gap: 20px;
 }
 
-@media screen and (max-width: adaptive.$sm) {
-    .benefits {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
-
 .benefit {
     display: flex;
     flex-direction: column;
     gap: 8px;
     align-items: flex-start;
+    justify-content: center;
     padding: 40px;
     border-radius: 22px;
     background-color: #F1F1F1;
@@ -60,6 +55,7 @@
         font-weight: 600;
         margin-bottom: 12px;
     }
+
     &>p {
         font-size: 25px;
         font-weight: 400;
@@ -67,13 +63,39 @@
 }
 
 @media screen and (max-width: adaptive.$sm) {
+    .benefits {
+        grid-template-columns: 1fr;
+    }
+
     .benefit {
         padding: calc(var(--padding) * 5);
+        align-items: center;
+        min-height: 300px;
+
+        &>img {
+            position: absolute;
+        }
+
         &>h4 {
-            font-size: 6vw;
+            font-size: 7vw;
+            text-align: center;
         }
+
         &>p {
-            font-size: 20px;
+            font-size: 22px;
+            text-align: center;
         }
+    }
+
+    .heart {
+        content: url('/heart-op.svg');
+    }
+
+    .clock {
+        content: url('/clock-op.svg');
+    }
+
+    .fire {
+        content: url('/fire-op.svg');
     }
 }

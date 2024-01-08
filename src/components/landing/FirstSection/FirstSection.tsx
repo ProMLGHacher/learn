@@ -9,7 +9,7 @@ const FirstSection = () => {
       <div>
         <h2 className={styles.title}>iPhone 15 и 15 Pro</h2>
         <h1 className={styles.subTitle}>Продажа iPhone в Оренбург</h1>
-        <Link href={'contacts'}>
+        <Link className={styles.byLink} href={'contacts'}>
           <button className={styles.byButton}>Купить <Image src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></button>
         </Link>
       </div>
