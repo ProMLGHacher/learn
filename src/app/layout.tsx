@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <head>
+
+      </head>
       <body style={{
         fontFamily: SF.style.fontFamily
       }} className={SF.className}>
