@@ -1,18 +1,20 @@
 import Product from '@/components/product/Product'
-import React from 'react'
+import styles from './Page.module.scss'
 
 const getData = async (category: string) => {
 
-    const data = await fetch(`http://localhost:3001/${category}`, {
-        next: {
-            revalidate: 10
-        }
-    })
+    // const data = await fetch(`http://localhost:3001/${category}`, {
+    //     next: {
+    //         revalidate: 10
+    //     }
+    // })
 
-    if (!(data.status === 200)) {
-        throw new Error('WTF')
-    }
-    return data.json()
+    // if (!(data.status === 200)) {
+    //     throw new Error('WTF')
+    // }
+    // return data.json()
+
+    return {"shop":[{"title":"iphone 14"},{"title":"iphone 15"}]}
 }
 
 const Page = async ({
@@ -29,11 +31,7 @@ const Page = async ({
 
     return (
         <main>
-            <div style={{
-                paddingBlock: '34px',
-                display: 'flex',
-                justifyContent: 'space-between'
-            }}>
+            <div className={styles.header}>
                 <p>Главная {'>'} Каталог {'>'} iPhone</p>
                 <p>iPhone 15</p>
             </div>
@@ -45,7 +43,7 @@ const Page = async ({
                 {
                     data.shop.map((el: {
                         title: string
-                    }) => <Product key={el.title} />)
+                    }) => <Product key={el.title} product={el} />)
                 }
             </div>
         </main>

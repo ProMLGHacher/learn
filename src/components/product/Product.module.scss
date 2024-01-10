@@ -13,6 +13,10 @@
     .wrapper {
         flex-direction: column;
     }
+
+    .main {
+        margin-top: 30px;
+    }
 }
 
 .carousel {
@@ -31,12 +35,14 @@
         width: 100%;
         display: flex;
         gap: 20px;
+        transition: transform 0.3s;
 
         &>img {
             width: 100%;
         }
     }
 }
+
 
 .main {
     flex-shrink: 10;
@@ -47,11 +53,31 @@
     justify-content: center;
 }
 
+.name {
+    max-width: 80%;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.desc {
+    max-width: 80%;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
 .price {
     display: flex;
-    flex-shrink: 0;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    &>p {
+        font-size: 20px;
+        font-weight: 600;
+    }
 }
 
 .arrow {
@@ -59,4 +85,104 @@
     background-color: transparent;
     border: none;
     cursor: pointer;
+}
+
+.configuraion {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+
+    &>div>p {
+        margin-bottom: 10px;
+    }
+}
+
+.toCart {
+    padding: 14px 17px 14px 61px;
+    display: flex;
+    gap: 22px;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 0.8px solid #000;
+}
+
+
+@media screen and (max-width: adaptive.$sm) {
+    .wrapper {
+        padding: 23px;
+    }
+
+    .configuraion {
+        flex-direction: column;
+    }
+
+    .carousel {
+        width: 100%;
+        gap: 23px;
+    }
+
+    .main {
+        margin-top: 30px;
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    .name {
+        max-width: 100%;
+        font-size: 24px;
+    }
+
+    .desc {
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
+
+
+
+
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.filter {
+    padding: 10px;
+    border-radius: 7px;
+    background-color: transparent;
+    border: 1px solid #B9B9B9;
+    cursor: pointer;
+}
+
+.selected {
+    border: 1px solid #000;
+}
+
+
+
+
+
+
+.colorFilters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.colorFilter {
+    width: 36px;
+    height: 36px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    cursor: pointer;
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .colorFilter {
+        width: 28px;
+        height: 28px;
+    }
 }
