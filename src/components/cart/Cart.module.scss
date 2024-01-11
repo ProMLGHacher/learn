@@ -1,0 +1,33 @@
+.cart {
+    position: absolute;
+    top: 240px;
+    right: 40px;
+    background-color: black;
+    border-radius: 50%;
+    padding: 24px 24px 24px 24px;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+
+
+    &>.tooltip {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        background-color: #FFF;
+
+        border: 1px solid black;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

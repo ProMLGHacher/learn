@@ -4,6 +4,7 @@
     padding-block: 34px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .categoryFilter {
@@ -20,12 +21,30 @@
     border-radius: 22px;
     background: #FFF;
 
-    cursor: pointer;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
 
+    cursor: pointer;
     &>img {
+        z-index: 1;
         position: absolute;
-        right: 32px;
+        right: 20px;
         top: 0;
         bottom: 0;
+        transform: translateY(50%);
+    }
+}
+
+
+.dropdown {
+    position: relative;
+    &>img {
+        z-index: 1;
+        position: absolute;
+        right: 20px;
+        top: 0;
+        bottom: 0;
+        transform: translateY(50%);
     }
 }
