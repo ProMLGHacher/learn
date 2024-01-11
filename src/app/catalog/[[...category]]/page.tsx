@@ -1,5 +1,6 @@
 import Product from '@/components/product/Product'
 import styles from './Page.module.scss'
+import Image from 'next/image'
 
 const getData = async (category: string) => {
 
@@ -14,7 +15,7 @@ const getData = async (category: string) => {
     // }
     // return data.json()
 
-    return {"shop":[{"title":"iphone 14"},{"title":"iphone 15"}]}
+    return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
 }
 
 const Page = async ({
@@ -33,7 +34,10 @@ const Page = async ({
         <main>
             <div className={styles.header}>
                 <p>Главная {'>'} Каталог {'>'} iPhone</p>
-                <p>iPhone 15</p>
+                <select className={styles.categoryFilter}>
+                    <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
+                    <option>iPhone 15</option>
+                </select>
             </div>
             <div style={{
                 display: 'flex',

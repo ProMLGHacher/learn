@@ -5,3 +5,27 @@
     display: flex;
     justify-content: space-between;
 }
+
+.categoryFilter {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 220px;
+
+    font-size: 16px;
+    font-weight: 300;
+    padding: 10px 32px;
+    border-radius: 22px;
+    background: #FFF;
+
+    cursor: pointer;
+
+    &>img {
+        position: absolute;
+        right: 32px;
+        top: 0;
+        bottom: 0;
+    }
+}
