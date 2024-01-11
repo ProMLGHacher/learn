@@ -1,0 +1,70 @@
+{
+    "filters": [
+        {
+            "type": "color",
+            "elements": [
+                {
+                    "name": "red",
+                    "hex" : "#FF0000"
+                },
+                {
+                    "name": "green",
+                    "hex" : "#00FF00"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "elements": [
+                {
+                    "name": "256gb"
+                },
+                {
+                    "name": "128gb"
+                }
+            ]
+        }
+    ],
+    "products" : [
+        {
+            "name" : "iphone",
+            "color" : "red",
+            "size" : "128gb",
+            "images" : [
+                "red image",
+                "red image",
+                "red image"
+            ]
+        },
+        {
+            "name" : "iphone",
+            "color" : "red",
+            "size" : "256gb",
+            "images" : [
+                "red image",
+                "red image",
+                "red image"
+            ]
+        },
+        {
+            "name" : "iphone",
+            "color" : "green",
+            "size" : "128gb",
+            "images" : [
+                "green image",
+                "green image",
+                "green image"
+            ]
+        },
+        {
+            "name" : "iphone",
+            "color" : "green",
+            "size" : "256gb",
+            "images" : [
+                "green image",
+                "green image",
+                "green image"
+            ]
+        }
+    ]
+}
