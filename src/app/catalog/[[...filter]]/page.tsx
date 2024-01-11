@@ -2,6 +2,7 @@ import Product from '@/components/product/Product'
 import styles from './Page.module.scss'
 import Image from 'next/image'
 import Cart from '@/components/cart/Cart'
+import Order from '@/components/order/Order'
 
 const getData = async (category: string) => {
 
@@ -24,11 +25,11 @@ const Page = async ({
 }:
     {
         params: {
-            category: string
+            filter: [string, string]
         }
     }) => {
 
-    const data = await getData(params.category || "all")
+    const data = await getData(params.filter ? params.filter[0] : "all")
 
 
     return (
@@ -48,7 +49,7 @@ const Page = async ({
                     </select>
                 </div>
             </div>
-            <div style={{
+            <div className={styles.wrap} style={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '32px'
