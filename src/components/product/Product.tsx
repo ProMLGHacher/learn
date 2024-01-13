@@ -75,7 +75,12 @@ const Product = ({
                     </div>
                 </div>
                 <div className={styles.price}>
-                    <button className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
+                    <button onClick={() => {
+                        const arr = JSON.parse(localStorage.getItem("cart") || "[]")
+                        arr.push(product.title)
+                        localStorage.setItem("cart", JSON.stringify(arr))
+                        window.dispatchEvent(new Event("storage"));
+                    }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
                     <p>134 990 ₽</p>
                 </div>
             </div>

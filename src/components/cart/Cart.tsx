@@ -4,14 +4,15 @@ import Image from 'next/image'
 import styles from './Cart.module.scss'
 import { useEffect, useState } from 'react'
 import Order from '../order/Order';
+import noSSR from '@/utils/noSsr';
 
 const Cart = () => {
 
-    const [tooltip, setTooltip] = useState([])
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
 
     useEffect(() => {
         const func = () => {
-            setTooltip(JSON.parse(localStorage.getItem("cart") || "[]"))
+            setCart(JSON.parse(localStorage.getItem("cart") || "[]"))
         }
         window.addEventListener('storage', func)
         return () => {
@@ -21,10 +22,10 @@ const Cart = () => {
 
     return (
         <>
-            <Order />
+            <Order cart={cart} />
             <a href='#order' className={styles.cart}>
                 <div className={styles.tooltip}>
-                    <p>{JSON.parse(localStorage.getItem("cart") || "[]").length}</p>
+                    <p>{cart.length}</p>
                 </div>
                 <Image src={'/cart.svg'} alt='корзина иконка' width={27} height={27} />
             </a>
@@ -43,4 +44,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default noSSR(Cart)

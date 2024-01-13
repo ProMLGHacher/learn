@@ -3,6 +3,7 @@ import styles from './Page.module.scss'
 import Image from 'next/image'
 import Cart from '@/components/cart/Cart'
 import Order from '@/components/order/Order'
+import Select from '@/components/select/Select'
 
 const getData = async (category: string) => {
 
@@ -19,6 +20,8 @@ const getData = async (category: string) => {
 
     return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
 }
+
+export const revalidate = 1000
 
 const Page = async ({
     params
@@ -37,17 +40,7 @@ const Page = async ({
             <Cart />
             <div className={styles.header}>
                 <p>Главная {'>'} Каталог {'>'} iPhone</p>
-                <div className={styles.dropdown}>
-                    <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
-                    <select className={styles.categoryFilter}>
-                        <option>iPhone 15</option>
-                        <option>iPhone 14</option>
-                        <option>iPhone 13</option>
-                        <option>iPhone 12</option>
-                        <option>iPhone 11</option>
-                        <option>iPhone 10</option>
-                    </select>
-                </div>
+                <Select />
             </div>
             <div className={styles.wrap} style={{
                 display: 'flex',

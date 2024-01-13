@@ -4,4 +4,9 @@
   box-sizing: border-box;
   --padding: 1vw;
   scroll-behavior: smooth;
+  --scroll: auto; 
+}
+
+body {
+  overflow-y: var(--scroll);
 }
