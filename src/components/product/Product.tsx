@@ -96,10 +96,14 @@ const Product = (
                 <div className={styles.price}>
                     <button onClick={() => {
                         const arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
-                        if (arr.findIndex()) {
-                            
+                        const index = arr.findIndex(el => el.productId == product.productId)
+                        
+                        if (index >= 0) {
+                            arr[index].count ++
+                        } else  {
+                            arr.push(product)
+                            arr[arr.length-1].count = 1
                         }
-                        arr.push(product)
                         localStorage.setItem("cart", JSON.stringify(arr))
                         window.dispatchEvent(new Event("storage"));
                     }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>

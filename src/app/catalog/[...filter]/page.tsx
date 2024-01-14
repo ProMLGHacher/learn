@@ -4,6 +4,8 @@ import Cart from '@/components/cart/Cart'
 import Select from '@/components/select/Select'
 import { BASE_URL } from '@/utils/conts'
 
+
+
 const getProducts = async (category: string, filter: string | undefined) => {
 
     const data = await fetch(`${BASE_URL}/api/products?deviceModel=${filter || category}`, {
@@ -61,8 +63,8 @@ const Page = async ({
         <main>
             <Cart />
             <div className={styles.header}>
-                <p>Главная {'>'} Каталог {'>'} {params.filter[0]}</p>
-                <Select caregory={params.filter[0]} filters={filters} />
+                <p>Главная {'>'} Каталог {'>'} {decodeURI(`${params.filter[0]}`)}</p>
+                <Select caregory={decodeURI(`${params.filter[0]}`)} filters={filters} />
             </div>
             <div className={styles.wrap} style={{
                 display: 'flex',

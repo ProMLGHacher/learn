@@ -50,17 +50,41 @@ const Order = (props: {
                             <h4 className={styles.tlte}>Оформить заказ</h4>
                             <div className={styles.products}>
                                 {
-                                    props.cart.map((el: any, index: number) =>
-                                        <div className={styles.product} key={el + index}>
+                                    props.cart.map((prod: any, index: number) =>
+                                        <div className={styles.product} key={prod + index}>
                                             <div className={styles.info}>
                                                 <img src="/airpods.png" alt="" />
-                                            <div>
-                                                    <h5>Apple iPhone 15 Pro</h5>
+                                                <div>
+                                                    <h5>{prod.name}</h5>
                                                     <p>128 ГБ, Титановый синий</p>
                                                     <div className={styles.counter}>
-                                                        <p>-</p>
-                                                        <p>1</p>
-                                                        <p>+</p>
+                                                        <button onClick={() => {
+                                                            let arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
+                                                            const index = arr.findIndex(el => el.productId == prod.productId)
+
+                                                            if (index >= 0) {
+
+                                                                if (arr[index].count <= 1) {
+                                                                    arr = arr.filter(fel => fel.productId != prod.productId)
+                                                                } else {
+                                                                    arr[index].count--
+                                                                }
+
+                                                            }
+                                                            localStorage.setItem("cart", JSON.stringify(arr))
+                                                            window.dispatchEvent(new Event("storage"));
+                                                        }}>-</button>
+                                                        <p>{prod.count}</p>
+                                                        <button onClick={() => {
+                                                            const arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
+                                                            const index = arr.findIndex(el => el.productId == prod.productId)
+
+                                                            if (index >= 0) {
+                                                                arr[index].count++
+                                                            }
+                                                            localStorage.setItem("cart", JSON.stringify(arr))
+                                                            window.dispatchEvent(new Event("storage"));
+                                                        }}>+</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -69,9 +93,9 @@ const Order = (props: {
                                                     let arr = JSON.parse(localStorage.getItem("cart") || "[]")
                                                     if (Array.isArray(arr)) {
                                                         console.log(arr);
-                                                        console.log(el);
+                                                        console.log(prod);
 
-                                                        arr = arr.filter(fel => fel.id != el.id)
+                                                        arr = arr.filter(fel => fel.productId != prod.productId)
                                                     }
                                                     localStorage.setItem("cart", JSON.stringify(arr))
                                                     window.dispatchEvent(new Event("storage"));
