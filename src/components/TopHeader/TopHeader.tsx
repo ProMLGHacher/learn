@@ -8,7 +8,7 @@ const TopHeader = () => {
         <nav className={styles.nav}>
             <div className={styles.innerNav}>
                 <Link className={styles.link} href={"/"}>Каталог</Link>
-                <Link className={styles.link} href={"/"}>Гарантия</Link>
+                <Link className={styles.link} href={"/warranty"}>Гарантия</Link>
                 <Link className={styles.link} href={"/"}>Сервисный центр</Link>
                 <Link className={styles.link} href={"/"}>Программа лояльности</Link>
                 <Link className={styles.link} href={"/"}>Доставка и оплата</Link>

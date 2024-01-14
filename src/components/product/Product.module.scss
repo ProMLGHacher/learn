@@ -4,7 +4,7 @@
     display: flex;
     padding: 60px;
     border-radius: 22px;
-    background-color: white;
+    background-color: #F1F1F1;
     margin-inline: auto;
 }
 
@@ -19,25 +19,45 @@
 }
 
 .carousel {
-    width: 300px;
+    position: relative;
+    width: 350px;
+    height: 450px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 35px;
     overflow: hidden;
     flex-shrink: 0;
+    border-radius: 10px;
 
-    & .imagesWrapper {
-        overflow: hidden;
+    &>button {
+        z-index: 2;
     }
 
-    & .images {
-        width: 100%;
-        display: flex;
-        gap: 20px;
-        transition: transform 0.3s;
+    &>.imagesWrapper {
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
 
-        &>img {
-            width: 100%;
+        display: flex;
+
+        &>.images {
+            max-height: 100%;
+            display: flex;
+            transition: transform 0.3s ease;
+            margin-block: auto;
+
+            &>img {
+                width: 100%;
+                object-fit: contain;
+            }
+
+            &>img {
+                margin-right: 20px;
+            }
         }
     }
 }
@@ -183,5 +203,25 @@
     .colorFilter {
         width: 28px;
         height: 28px;
+    }
+}
+
+
+.dots {
+
+    display: flex;
+    gap: 5px;
+
+    &>div {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: #B9B9B9;
+        transition: transform .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+        &.active {
+            background-color: black;
+            transform: scale(1.25);
+        }
     }
 }

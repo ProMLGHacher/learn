@@ -18,41 +18,43 @@ const Order = (props: {
                         <a href={'#'}><Image src={'/exit.svg'} alt='close modal' width={20} height={20} /></a>
                     </div>
                     <div className={styles.main}>
-                        <div>
+                        <form>
                             <h4 className={styles.tlte}>Оформить заказ</h4>
                             <div className={styles.edit}>
                                 <p>Ваше ФИО<span className={styles.red}>*</span></p>
-                                <input type="text" />
+                                <input type="text" required />
                             </div>
                             <div className={styles.edit}>
                                 <p>Телефон<span className={styles.red}>*</span></p>
-                                <input type="text" />
+                                <input required minLength={11} maxLength={11} type="tel" />
                             </div>
                             <div className={styles.edit}>
                                 <p>E-mail</p>
-                                <input type="text" />
+                                <input type="email" />
                             </div>
                             <div className={styles.edit}>
                                 <p>Как с вами связаться?</p>
                                 <select name="" id="">
                                     <option value="Перезвонить">Перезвонить</option>
-                                    <option value="Пососать хуй">Пососать хуй</option>
+                                    <option value="Написать">Написать</option>
                                 </select>
                             </div>
                             <div className={styles.edit}>
                                 <p>Коментарий</p>
                                 <input type="text" />
                             </div>
-                        </div>
+                            <button className={styles.submit} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
+                            <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={''}>персональных данных</Link></p>
+                        </form>
                         <div className={styles.reverse}>
                             <h4 className={styles.tlte}>Оформить заказ</h4>
                             <div className={styles.products}>
                                 {
-                                    props.cart.map((el: string, index: number) =>
+                                    props.cart.map((el: any, index: number) =>
                                         <div className={styles.product} key={el + index}>
                                             <div className={styles.info}>
                                                 <img src="/airpods.png" alt="" />
-                                                <div>
+                                            <div>
                                                     <h5>Apple iPhone 15 Pro</h5>
                                                     <p>128 ГБ, Титановый синий</p>
                                                     <div className={styles.counter}>
@@ -66,7 +68,10 @@ const Order = (props: {
                                                 <button onClick={() => {
                                                     let arr = JSON.parse(localStorage.getItem("cart") || "[]")
                                                     if (Array.isArray(arr)) {
-                                                        arr = arr.filter(fel => fel != el)
+                                                        console.log(arr);
+                                                        console.log(el);
+
+                                                        arr = arr.filter(fel => fel.id != el.id)
                                                     }
                                                     localStorage.setItem("cart", JSON.stringify(arr))
                                                     window.dispatchEvent(new Event("storage"));

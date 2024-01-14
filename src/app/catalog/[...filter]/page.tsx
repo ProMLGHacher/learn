@@ -4,9 +4,9 @@ import Cart from '@/components/cart/Cart'
 import Select from '@/components/select/Select'
 import { BASE_URL } from '@/utils/conts'
 
-const getProducts = async (category: string, filter: string) => {
+const getProducts = async (category: string, filter: string | undefined) => {
 
-    const data = await fetch(`${BASE_URL}/api/products?deviceModel=${category}`, {
+    const data = await fetch(`${BASE_URL}/api/products?deviceModel=${filter || category}`, {
         next: {
             revalidate: 10
         }
@@ -61,7 +61,7 @@ const Page = async ({
         <main>
             <Cart />
             <div className={styles.header}>
-                <p>Главная {'>'} Каталог {'>'} iPhone</p>
+                <p>Главная {'>'} Каталог {'>'} {params.filter[0]}</p>
                 <Select caregory={params.filter[0]} filters={filters} />
             </div>
             <div className={styles.wrap} style={{

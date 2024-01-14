@@ -16,13 +16,13 @@ const Select = (props: {
     return (
         <div className={styles.dropdown}>
             <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
-            <select onChange={(e) => {
+            <select title='ok' onChange={(e) => {
                 location.pathname = `/catalog/${props.caregory}/${e.target.value}`
             }} defaultValue={filter} className={styles.categoryFilter}>
                 <option value={""}>Всё</option>
                 {
-                    props.filters.map(el => <>
-                        <option key={el} value={el}>{el}</option>
+                    props.filters.map((el, index) => <>
+                        <option key={el + index} value={el}>{el}</option>
                     </>)
                 }
             </select>

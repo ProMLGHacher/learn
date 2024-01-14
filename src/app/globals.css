@@ -5,6 +5,7 @@
   --padding: 1vw;
   scroll-behavior: smooth;
   --scroll: auto; 
+  --max-width: 1444px;
 }
 
 body {

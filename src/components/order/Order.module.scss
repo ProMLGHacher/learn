@@ -202,3 +202,22 @@
         cursor: pointer;
     }
 }
+
+.submit {
+    padding: 12px 19px 14px 50px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 0.8px solid #000;
+    display: flex;
+    gap: 21px;
+    align-items: center;
+}
+
+.personalData {
+    color: black;
+    margin-top: 24px;
+
+    &>a {
+        color: black;
+    }
+}

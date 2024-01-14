@@ -1,7 +1,7 @@
 @use '../../../app/responsive.scss' as adaptive;
 
 .wrapper {
-    max-width: 1920px;
+    max-width: var(--max-width);
     width: 90%;
     margin-inline: auto;
 }
@@ -44,8 +44,15 @@
         flex-direction: column;
         justify-content: center;
 
+        &>div {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 22px;
+        }
+
         &>h5 {
-            font-size: 35px;
+            font-size: 26px;
             margin-bottom: 8px;
         }
     }

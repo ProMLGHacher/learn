@@ -19,9 +19,8 @@ const PortableHeader = () => {
                 </nav>
             </div>
             <div className={styles.rightSide}>
-                <button className={styles.search}><Image src={'/search.png'} alt='search' width={24} height={24} /></button>
                 <Image src={'/call.png'} alt='call' width={17} height={17} />
-                <Link className={styles.phone} href={'tel:+79878884054'} >+7 (000) 000-00-00</Link>
+                <Link className={styles.phone} href={'tel:+79878476868'} >+7 (987) 847-68-68</Link>
             </div>
         </div>
   )

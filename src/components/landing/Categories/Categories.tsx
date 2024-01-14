@@ -15,44 +15,44 @@ const Categories = () => {
                     gridArea: "iphone"
                 }} className={`${styles.category} ${styles.iphone}`}>
                     <h4>iPhone</h4>
-                    <img src="/iphonecat.png" alt="iphone" />
+                    <img src="\cat\iPhone-cat.png" alt="iphone" />
                 </Link>
-                <div style={{
+                <Link href={'/catalog/AirPods'} style={{
                     gridArea: "AirPods"
                 }} className={styles.category}>
                     <h4>AirPods</h4>
                     <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div style={{
+                </Link>
+                <Link href={'/catalog/Watch'} style={{
                     gridArea: "Watch"
                 }} className={styles.category}>
                     <h4>Watch</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div style={{
+                    <img src="\cat\Watch-cat.png" alt="iphone" />
+                </Link>
+                <Link href={'/catalog/Mac'} style={{
                     gridArea: "Mac"
                 }} className={styles.category}>
                     <h4>Mac</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div style={{
+                    <img src="\cat\mac-cat.png" alt="iphone" />
+                </Link>
+                <Link href={'/catalog/iPad'} style={{
                     gridArea: "iPad"
                 }} className={styles.category}>
                     <h4>iPad</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div className={styles.category}>
-                    <h4>iPhone</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div className={styles.category}>
-                    <h4>iPhone</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
-                <div className={styles.category}>
-                    <h4>iPhone</h4>
-                    <img src="/airpods.png" alt="iphone" />
-                </div>
+                    <img src="\cat\iPad-cat.png" alt="iphone" />
+                </Link>
+                <Link href={'/catalog/Аксессуары'} className={`${styles.category} ${styles.acs}`}>
+                    <h4>Аксессуары</h4>
+                    <img src="\cat\usb-cat.png" alt="iphone" />
+                </Link>
+                <Link href={'/catalog/Игровые приставки'} className={`${styles.category} ${styles.ps}`}>
+                    <img src="\cat\ps-cat.png" alt="iphone" />
+                    <h4>Игровые приставки</h4>
+                </Link>
+                <Link href={'/catalog/Dyson'} className={styles.category}>
+                    <h4>Dyson</h4>
+                    <img src="\cat\dyson-cat.png" alt="iphone" />
+                </Link>
             </div>
         </div>
     )

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import styles from './page.module.scss'
+import Link from 'next/link'
 
 const Contacts = () => {
   return (
@@ -17,9 +18,9 @@ const Contacts = () => {
         </div>
         <div>
           <p className={styles.smallTitle}>связь с нами</p>
-          <a className={styles.phone} href="tel:+73532976969">+7 (353) 297-69-69</a>
-          <p className={styles.sm}>Whats’app</p>
-          <p className={styles.sm}>Telegram</p>
+          <a className={styles.phone} href="tel:+79878476868">+7 (987) 847-68-68</a>
+          <Link href={'#'} className={styles.sm}>Whats’app</Link>
+          <Link href={'#'} className={styles.sm}>Telegram</Link>
         </div>
       </div>
       

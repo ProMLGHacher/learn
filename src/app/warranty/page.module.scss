@@ -1,0 +1,22 @@
+.wrp {
+    max-width: var(--max-width);
+    width: 90%;
+    margin-inline: auto;
+
+    &>h3 {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 28px;
+    }
+
+    &>p {
+        font-weight: 500;
+        margin-top: 40px;
+    }
+
+    &>h4 {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 50px;
+    }
+}

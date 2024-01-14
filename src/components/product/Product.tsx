@@ -16,6 +16,8 @@ const Product = (
 
     console.log(product);
 
+    const ok = [1, 2, 3, 4, 5, 6]
+
 
     const images = useRef<null | HTMLDivElement>(null)
     const [carousel, setCarousel] = useState(0)
@@ -23,31 +25,43 @@ const Product = (
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.carousel}>
-                <button onClick={() => {
-                    if (carousel == 0) return
-                    setCarousel(prev => --prev)
-                }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
-                <div className={styles.imagesWrapper}>
-                    <div ref={images} className={styles.images} style={{
-                        // +20 потому что gap
-                        transform: `translateX(-${(imageWidth + 20) * carousel}px)`
-                    }}>
-                        <img src="/iphonecat.png" alt="iphone" />
-                        <img src="/airpods.png" alt="iphone" />
-                        <img src="/iphonecat.png" alt="iphone" />
-                        <img src="/iphonecat.png" alt="iphone" />
-                        <img src="/iphonecat.png" alt="iphone" />
-                        <img src="/iphonecat.png" alt="iphone" />
+            <div style={{
+                display: 'flex',
+                flexDirection: "column",
+                alignItems: 'center',
+                gap: '20px'
+            }}>
+                <div className={styles.carousel}>
+                    <button onClick={() => {
+                        if (carousel == 0) return
+                        setCarousel(prev => --prev)
+                    }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                    <div className={styles.imagesWrapper}>
+                        <div ref={images} className={styles.images} style={{
+                            // +20 потому что gap
+                            transform: `translateX(-${(imageWidth + 20) * carousel}px)`
+                        }}>
+                            <img src="/iphonecat.png" alt="iphone" />
+                            <img src="/airpods.png" alt="iphone" />
+                            <img src="/iphonecat.png" alt="iphone" />
+                            <img src="/iphonecat.png" alt="iphone" />
+                            <img src="/iphonecat.png" alt="iphone" />
+                            <img src="/iphonecat.png" alt="iphone" />
+                        </div>
                     </div>
+                    <button onClick={() => {
+                        if (!images.current) return
+                        if (carousel == 5) return
+                        setCarousel(prev => ++prev)
+                    }} style={{
+                        transform: 'rotateZ(180deg)'
+                    }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
                 </div>
-                <button onClick={() => {
-                    if (!images.current) return
-                    if (carousel == 5) return
-                    setCarousel(prev => ++prev)
-                }} style={{
-                    transform: 'rotateZ(180deg)'
-                }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                <div className={styles.dots}>
+                    {
+                        ok.map((index, ind) => <div key={index} className={`${ind == carousel ? styles.active : ''}`}></div>)
+                    }
+                </div>
             </div>
             <div className={styles.main}>
                 <h4 className={styles.name}>{product.name}</h4>

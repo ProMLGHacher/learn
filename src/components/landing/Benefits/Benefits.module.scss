@@ -1,7 +1,7 @@
 @use '../../../app/responsive.scss' as adaptive;
 
 .wrapper {
-    max-width: 1920px;
+    max-width: var(--max-width);
     width: 90%;
     margin-inline: auto;
 }
@@ -51,13 +51,13 @@
     }
 
     &>h4 {
-        font-size: 30px;
+        font-size: 28px;
         font-weight: 600;
         margin-bottom: 12px;
     }
 
     &>p {
-        font-size: 25px;
+        font-size: 20px;
         font-weight: 400;
     }
 }
