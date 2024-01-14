@@ -40,7 +40,7 @@ const Order = (props: {
                                 </select>
                             </div>
                             <div className={styles.edit}>
-                                <p>Ваше ФИО</p>
+                                <p>Коментарий</p>
                                 <input type="text" />
                             </div>
                         </div>
@@ -76,6 +76,15 @@ const Order = (props: {
                                         </div>
                                     )
                                 }
+                            </div>
+                            <div className={styles.divider}></div>
+                            <div className={styles.finalPrice}>
+                                <p>Итого:</p>
+                                <p>114 990 ₽</p>
+                            </div>
+                            <div className={styles.promoCode}>
+                                <input type="text" placeholder='Промокод' />
+                                <button>Применить</button>
                             </div>
                         </div>
                     </div>

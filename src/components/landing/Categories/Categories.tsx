@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
 import styles from './Categories.module.scss'
+import Link from 'next/link'
 
 const Categories = () => {
     return (
@@ -9,12 +11,12 @@ const Categories = () => {
                 <h2>Лучшие устройства Apple в одном магазине</h2>
             </div>
             <div className={styles.categories}>
-                <div style={{
+                <Link href={'/catalog/Iphone'} style={{
                     gridArea: "iphone"
                 }} className={`${styles.category} ${styles.iphone}`}>
                     <h4>iPhone</h4>
                     <img src="/iphonecat.png" alt="iphone" />
-                </div>
+                </Link>
                 <div style={{
                     gridArea: "AirPods"
                 }} className={styles.category}>
