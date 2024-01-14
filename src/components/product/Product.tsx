@@ -95,7 +95,10 @@ const Product = (
                 </div>
                 <div className={styles.price}>
                     <button onClick={() => {
-                        const arr = JSON.parse(localStorage.getItem("cart") || "[]")
+                        const arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
+                        if (arr.findIndex()) {
+                            
+                        }
                         arr.push(product)
                         localStorage.setItem("cart", JSON.stringify(arr))
                         window.dispatchEvent(new Event("storage"));
