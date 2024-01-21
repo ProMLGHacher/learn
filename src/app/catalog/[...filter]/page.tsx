@@ -19,8 +19,6 @@ const getProducts = async (category: string, filter: string | undefined) => {
     if (json.length == 0) {
         redirect('/')
     }
-
-    console.log(json);
     
     
     return json
@@ -29,24 +27,17 @@ const getProducts = async (category: string, filter: string | undefined) => {
 }
 
 const getFilters = async (category: string) => {
-
-    if (category === 'all') {
-        throw new Error('WTF')
-    }
-
     const data = await fetch(`${BASE_URL}/api/deviceModels?categoryName=${category}`, {
         next: {
-            revalidate: 2
+            revalidate: 10
         }
     })
 
     if (!(data.status === 200)) {
-        throw new Error('WTF')
+        throw new Error('')
     }
     const json: Array<any> = await data.json()
     return json
-
-    // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
 }
 
 const Page = async ({

@@ -21,8 +21,8 @@ const Select = (props: {
             <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
             <select title='filter' onChange={(e) => {
                 location.pathname = `/catalog/${props.caregory}/${e.target.value}`
-            }} defaultValue={filter || "all"} className={styles.categoryFilter}>
-                <option value={"all"}>Всё</option>
+            }} defaultValue={filter || ""} className={styles.categoryFilter}>
+                <option value={""}>Всё</option>
                 {
                     props.filters.map((el, index) => 
                         <option key={el} value={el}>{el}</option>

@@ -29,12 +29,14 @@ const Cart = () => {
     return (
         <>
             <Order cart={cart} />
-            <a href='#order' className={`${styles.cart} ${animate ? styles.anim : ""}`}>
-                <div className={styles.tooltip}>
-                    <p>{cart.reduce((acc, el) => acc+=el.count, 0)}</p>
-                </div>
-                <Image src={'/cart.svg'} alt='корзина иконка' width={27} height={27} />
-            </a>
+            <div className={styles.wrp}>
+                <a href='#order' className={`${styles.cart} ${animate ? styles.anim : ""}`}>
+                    <div className={styles.tooltip}>
+                        <p>{cart.reduce((acc, el) => acc += el.count, 0)}</p>
+                    </div>
+                    <Image src={'/cart.svg'} alt='корзина иконка' width={27} height={27} />
+                </a>
+            </div>
         </>
     )
 }

@@ -13,6 +13,7 @@ const TopHeader = () => {
                     <Link className={styles.link} href={"/"}>Сервисный центр</Link>
                     <Link className={styles.link} href={"/"}>Программа лояльности</Link>
                     <Link className={styles.link} href={"/"}>Доставка и оплата</Link>
+                    <Link className={styles.link} href={"/contacts"}>Контакты</Link>
                 </div>
                 <div className={styles.innerNav}>
                     <Link className={styles.link} href={"/"}>Whats’app</Link>

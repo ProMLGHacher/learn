@@ -22,8 +22,8 @@ const MobileHeader = () => {
         <div className={styles.categories}>
           <Link onClick={exitClickHandler} href={"/catalog/Iphone"}>iPhone</Link>
           <Link onClick={exitClickHandler} href={"/catalog/AirPods"}>AirPods</Link>
-          <Link onClick={exitClickHandler} href={"/catalog/Watch"}>Mac</Link>
-          <Link onClick={exitClickHandler} href={"/catalog/Mac"}>Watch</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/Watch"}>Watch</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/Mac"}>Mac</Link>
           <Link onClick={exitClickHandler} href={"/catalog/iPad"}>iPad</Link>
           <Link onClick={exitClickHandler} href={"/catalog/Аксессуары"}>Dyson</Link>
           <Link onClick={exitClickHandler} href={"/catalog/Игровые приставки"}>Аксесуары</Link>
@@ -36,6 +36,7 @@ const MobileHeader = () => {
           <Link onClick={exitClickHandler} href={"#categories"}>Сервисный центр</Link>
           <Link onClick={exitClickHandler} href={"#categories"}>Программа лояльности</Link>
           <Link onClick={exitClickHandler} href={"#categories"}>Доставка и оплата</Link>
+          <Link onClick={exitClickHandler} href={"/contacts"}>Контакты</Link>
         </nav>
         <div className={styles.divider}></div>
         <div className={styles.contacts}>

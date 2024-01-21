@@ -37,7 +37,7 @@ const Blog = async () => {
     return (
         <>
             {
-                blog && <div className={styles.wrapper}>
+                blog && blog?.length != 0 ? <div className={styles.wrapper}>
                     <div className={styles.title}>
                         <Image src={'/world.svg'} width={41} height={41} alt='Блог икнока' />
                         <h4>Блог</h4>
@@ -54,7 +54,7 @@ const Blog = async () => {
                     <div className={styles.viewAll}>
                         <Link className={`tap`} href={'/'}>Посмотреть все</Link>
                     </div>
-                </div>
+                </div> : <></>
             }
         </>
     )

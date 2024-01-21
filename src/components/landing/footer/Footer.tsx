@@ -7,7 +7,7 @@ const Footer = () => {
             <div>
                 <h5>Всегда рядом</h5>
                 <p>Оставьте заявку и мы свяжемся с вами в ближайшее время.</p>
-                <button className={styles.button}>Консультация <Image src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></button>
+                <button className={`${styles.button} tap`}>Консультация <Image src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></button>
             </div>
         </footer>
     )

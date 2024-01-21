@@ -6,6 +6,7 @@ import Service from '@/components/landing/Service/Service'
 import Blog from '@/components/landing/Blog/Blog'
 import './responsive.scss'
 import Footer from '@/components/landing/footer/Footer'
+import { Suspense } from 'react'
 
 export default function Home() {
   return (
@@ -15,7 +16,9 @@ export default function Home() {
         <Categories />
         <Benefits />
         <Service />
+        <Suspense fallback="" >
         <Blog />
+        </Suspense>
       </main>
       <Footer />
     </>

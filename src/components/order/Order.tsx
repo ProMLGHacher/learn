@@ -3,6 +3,19 @@
 import styles from './Order.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCallback, useEffect, useState } from 'react';
+import { BASE_URL } from '@/utils/conts';
+import { redirect, useRouter } from 'next/navigation';
+
+type PromoCodeType = "DiscountAmount" | "DiscountPercentage"
+
+type Promocode = {
+    type?: PromoCodeType | undefined,
+    code?: string | undefined,
+    value?: number | undefined,
+    dateExpiration?: string | undefined,
+    error?: boolean | undefined
+}
 
 const Order = (props: {
     cart:
@@ -22,6 +35,86 @@ const Order = (props: {
     }[]
 }) => {
 
+
+    const [name, setName] = useState("")
+    const [phone, setPhone] = useState("")
+    const [email, setEmail] = useState("")
+    const [communicationMethod, setCommunicationMethod] = useState("Phone")
+    const [comment, setComment] = useState("")
+    const [promoCode, setPromoCode] = useState("")
+    const [promoCodeStatus, setPromoCodeStaus] = useState<Promocode>({})
+
+    const router = useRouter()
+
+    const [price, setPrice] = useState(props.cart.reduce((acc, el) => acc += el.config.totalPrice * (el.count ? el.count : 0), 0))
+
+    useEffect(() => {
+        setPrice(props.cart.reduce((acc, el) => acc += el.config.totalPrice * (el.count ? el.count : 0), 0))
+        if (!promoCodeStatus.error && promoCodeStatus.value) {
+            if (promoCodeStatus.type == "DiscountAmount") {
+                setPrice(prev=>prev-promoCodeStatus.value!)
+            }
+            if (promoCodeStatus.type == "DiscountPercentage") {
+                setPrice(prev=>prev - (prev / 100 * promoCodeStatus.value!))
+            }
+        }
+    }, [promoCodeStatus.error, promoCodeStatus.type, promoCodeStatus.value, props.cart])
+
+
+    const checkPromocode = useCallback(async () => {
+        const data = await fetch(BASE_URL + '/api/promocode?code=' + promoCode)
+        if (data.status == 200) {
+            const promo = await data.json()
+            setPromoCodeStaus({
+                ...promo,
+                error: false
+            })
+        } else {
+            setPromoCode('')
+            setPromoCodeStaus({
+                error: true
+            })
+        }
+    }, [promoCode])
+
+
+    const submit = useCallback(async (e: any) => {
+        e?.preventDefault()
+        console.log(props.cart.length);
+        
+        if (!name) return
+        if (!phone) return
+        if (props.cart.length == 0) return
+        
+        const data = await fetch(BASE_URL + '/api/order', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+                "fullname": name,
+                "phone": phone,
+                "email": email,
+                "communicationMethod": communicationMethod,
+                "comment": comment,
+                "promoCode": promoCodeStatus.code,
+                "configurations": props.cart.map(el => {
+                    return {
+                        configurationId: el.config.configurationId,
+                        count: el.count
+                    }
+                })
+            })
+        })
+
+        if (data.status == 200) {
+            sessionStorage.clear()
+            router.push('/')
+        }
+
+    }, [comment, communicationMethod, email, name, phone, promoCodeStatus.code, props.cart, router])
+
     return (
         <>
             <div id='order' className={styles.wrapper}>
@@ -34,28 +127,38 @@ const Order = (props: {
                             <h4 className={styles.tlte}>Оформить заказ</h4>
                             <div className={styles.edit}>
                                 <p>Ваше ФИО<span className={styles.red}>*</span></p>
-                                <input type="text" required />
+                                <input value={name} onChange={(e) => {
+                                    setName(e.target.value)
+                                }} type="name" required autoComplete='name' />
                             </div>
                             <div className={styles.edit}>
                                 <p>Телефон<span className={styles.red}>*</span></p>
-                                <input required minLength={11} maxLength={11} type="tel" />
+                                <input value={phone} onChange={(e) => {
+                                    setPhone(e.target.value)
+                                }} required minLength={11} maxLength={11} type="tel" />
                             </div>
                             <div className={styles.edit}>
                                 <p>E-mail</p>
-                                <input type="email" />
+                                <input value={email} onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }} type="email" />
                             </div>
                             <div className={styles.edit}>
                                 <p>Как с вами связаться?</p>
-                                <select name="" id="">
-                                    <option value="Перезвонить">Перезвонить</option>
-                                    <option value="Написать">Написать</option>
+                                <select value={communicationMethod} onChange={(e) => {
+                                    setCommunicationMethod(e.target.value)
+                                }} name="" id="">
+                                    <option value="Phone">Перезвонить</option>
+                                    <option value="Email">Написать</option>
                                 </select>
                             </div>
                             <div className={styles.edit}>
                                 <p>Коментарий</p>
-                                <input type="text" />
+                                <input value={comment} onChange={(e) => {
+                                    setComment(e.target.value)
+                                }} type="text" />
                             </div>
-                            <button className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
+                            <button onClick={submit} className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
                             <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={''}>персональных данных</Link></p>
                         </form>
                         <div className={styles.reverse}>
@@ -124,12 +227,29 @@ const Order = (props: {
                             <div className={styles.divider}></div>
                             <div className={styles.finalPrice}>
                                 <p>Итого:</p>
-                                <p>{props.cart.reduce((acc, el) => acc+=el.config.totalPrice * (el.count ? el.count : 0), 0)} ₽</p>
+                                <p>{price} ₽</p>
                             </div>
                             <div className={styles.promoCode}>
-                                <input type="text" placeholder='Промокод' />
-                                <button className='tap'>Применить</button>
+                                <input value={promoCode} onChange={(e) => {
+                                    if (promoCodeStatus.error || promoCodeStatus.value) {
+                                        setPromoCodeStaus({
+                                            code: undefined,
+                                            dateExpiration: undefined,
+                                            type: undefined,
+                                            value: undefined,
+                                            error: undefined
+                                        })
+                                    }
+                                    setPromoCode(e.target.value)
+                                }} type="text" placeholder='Промокод' />
+                                <button onClick={checkPromocode} className='tap'>Применить</button>
                             </div>
+                            {
+                                promoCodeStatus.error == true && <p className={styles.promoStatus}>{`${"Промокод не существует"}`}</p>
+                            }
+                            {
+                                promoCodeStatus.error == false && <p className={styles.promoStatus}>{`Промокод успешно применен`}</p>
+                            }
                         </div>
                     </div>
                 </div>

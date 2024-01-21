@@ -51,7 +51,7 @@
 
     &>a:not(:first-child) {
         height: 45vh;
-        max-height: 800px;
+        max-height: 550px;
         overflow: hidden;
     }
 }
@@ -65,9 +65,11 @@
             "gagets iPad";
         ;
         grid-template-columns: 1fr 1fr;
+        &>a:not(:first-child) {
+            max-height: 600px;
+        }
         &>a {
-            height: 45vh;
-            overflow: hidden;
+            max-height: 600px;
         }
     }
 }
@@ -84,10 +86,11 @@
             "gagets" 1fr;
         ;
         grid-template-columns: 1fr;
+        &>a:not(:first-child) {
+            max-height: 600px;
+        }
         &>a {
-            height: 45vh;
-            max-height: 800px;
-            overflow: hidden;
+            max-height: 600px;
         }
     }
 }
