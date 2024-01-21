@@ -8,12 +8,12 @@ import noSSR from '@/utils/noSsr';
 
 const Cart = () => {
 
-    const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart") || "[]"))
+    const [cart, setCart] = useState<any[]>(JSON.parse(sessionStorage.getItem("cart") || "[]"))
     const [animate, setAnimate] = useState(false)
 
     useEffect(() => {
         const func = () => {
-            setCart(JSON.parse(localStorage.getItem("cart") || "[]"))
+            setCart(JSON.parse(sessionStorage.getItem("cart") || "[]"))
             setAnimate(false)
             setAnimate(true)
             setTimeout(() => {
@@ -31,7 +31,7 @@ const Cart = () => {
             <Order cart={cart} />
             <a href='#order' className={`${styles.cart} ${animate ? styles.anim : ""}`}>
                 <div className={styles.tooltip}>
-                    <p>{cart.length}</p>
+                    <p>{cart.reduce((acc, el) => acc+=el.count, 0)}</p>
                 </div>
                 <Image src={'/cart.svg'} alt='корзина иконка' width={27} height={27} />
             </a>

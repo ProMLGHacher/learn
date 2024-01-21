@@ -3,6 +3,8 @@ import styles from './Page.module.scss'
 import Cart from '@/components/cart/Cart'
 import Select from '@/components/select/Select'
 import { BASE_URL } from '@/utils/conts'
+import { redirect } from 'next/navigation'
+
 
 
 
@@ -13,11 +15,15 @@ const getProducts = async (category: string, filter: string | undefined) => {
             revalidate: 10
         }
     })
-
-    if (!(data.status === 200)) {
-        throw new Error('WTF')
+    const json: Array<any> = await data.json()
+    if (json.length == 0) {
+        redirect('/')
     }
-    return data.json()
+
+    console.log(json);
+    
+    
+    return json
 
     // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
 }
@@ -37,12 +43,11 @@ const getFilters = async (category: string) => {
     if (!(data.status === 200)) {
         throw new Error('WTF')
     }
-    return data.json()
+    const json: Array<any> = await data.json()
+    return json
 
     // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
 }
-
-export const revalidate = 1000
 
 const Page = async ({
     params
@@ -59,6 +64,7 @@ const Page = async ({
 
     const [products, filters] = await Promise.all([getProductsData, getFiltersData])
 
+
     return (
         <main>
             <Cart />
@@ -72,7 +78,7 @@ const Page = async ({
                 gap: '32px'
             }}>
                 {
-                    products.map((el: any) => <Product key={el.name} product={el} />)
+                    products.map((el: any) => <Product key={el.productId} product={el} />)
                 }
             </div>
         </main>

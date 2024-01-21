@@ -8,14 +8,14 @@ const PortableHeader = () => {
             <div className={styles.leftSide}>
                 <Link href={'/'}><Image src={'/logo.png'} width={77} height={21.68} alt='logo' /></Link>
                 <nav className={styles.nav}>
-                    <Link className={styles.navItem} href={'/'} >iPhone</Link>
-                    <Link className={styles.navItem} href={'/'} >AirPods</Link>
-                    <Link className={styles.navItem} href={'/'} >Mac</Link>
-                    <Link className={styles.navItem} href={'/'} >Watch</Link>
-                    <Link className={styles.navItem} href={'/'} >iPad</Link>
-                    <Link className={styles.navItem} href={'/'} >Dyson</Link>
-                    <Link className={styles.navItem} href={'/'} >Игровые приставки</Link>
-                    <Link className={styles.navItem} href={'/'} >Аксесуары</Link>
+                    <Link className={styles.navItem} href={"/catalog/Iphone"}>iPhone</Link>
+                    <Link className={styles.navItem} href={"/catalog/AirPods"}>AirPods</Link>
+                    <Link className={styles.navItem} href={"/catalog/Watch"}>Mac</Link>
+                    <Link className={styles.navItem} href={"/catalog/Mac"}>Watch</Link>
+                    <Link className={styles.navItem} href={"/catalog/iPad"}>iPad</Link>
+                    <Link className={styles.navItem} href={"/catalog/Аксессуары"}>Dyson</Link>
+                    <Link className={styles.navItem} href={"/catalog/Игровые приставки"}>Аксесуары</Link>
+                    <Link className={styles.navItem} href={"/catalog/Dyson"}>Игровые приставки</Link>
                 </nav>
             </div>
             <div className={styles.rightSide}>

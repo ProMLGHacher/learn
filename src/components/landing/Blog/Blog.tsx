@@ -7,7 +7,7 @@ const getPosts = async (): Promise<{
     name: string,
     shortDescription: string,
     description: string
-}[]> => {
+}[] | undefined> => {
     const data = await fetch(`${BASE_URL}/api/blogs`, {
         method: "POST",
         mode: 'cors',
@@ -19,12 +19,13 @@ const getPosts = async (): Promise<{
             "loadPosition": 0
         }),
         next: {
-            revalidate: 10
+            revalidate: 10,
+            tags: ['blog']
         }
     })
 
     if (!(data.status === 200)) {
-        throw new Error(data.status.toString())
+        return undefined
     }
     return data.json()
 }
@@ -46,12 +47,12 @@ const Blog = async () => {
                             blog.map((el, index: number) => <div key={el.name + index}>
                                     <h5>{el.name}</h5>
                                     <p>{el.shortDescription}</p>
-                                    <div>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></div>
+                                    <a className={`tap`}>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></a>
                                 </div>)
                         }
                     </div>
                     <div className={styles.viewAll}>
-                        <Link href={'/'}>Посмотреть все</Link>
+                        <Link className={`tap`} href={'/'}>Посмотреть все</Link>
                     </div>
                 </div>
             }

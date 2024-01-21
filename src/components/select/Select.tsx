@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import styles from './Select.module.scss'
 import { usePathname } from 'next/navigation';
+import React from 'react';
 
 const Select = (props: {
     caregory: string,
@@ -12,18 +13,20 @@ const Select = (props: {
     const pathname = usePathname()
     const filter = (pathname.split('/')[3] || 'all').replace('%20', ' ')
 
+    
+
 
     return (
         <div className={styles.dropdown}>
             <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
-            <select title='ok' onChange={(e) => {
+            <select title='filter' onChange={(e) => {
                 location.pathname = `/catalog/${props.caregory}/${e.target.value}`
-            }} defaultValue={filter} className={styles.categoryFilter}>
-                <option value={""}>Всё</option>
+            }} defaultValue={filter || "all"} className={styles.categoryFilter}>
+                <option value={"all"}>Всё</option>
                 {
-                    props.filters.map((el, index) => <>
-                        <option key={el + index} value={el}>{el}</option>
-                    </>)
+                    props.filters.map((el, index) => 
+                        <option key={el} value={el}>{el}</option>
+                   )
                 }
             </select>
         </div>

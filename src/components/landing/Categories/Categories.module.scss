@@ -66,7 +66,7 @@
         ;
         grid-template-columns: 1fr 1fr;
         &>a {
-            height: 40vh;
+            height: 45vh;
             overflow: hidden;
         }
     }
@@ -85,7 +85,7 @@
         ;
         grid-template-columns: 1fr;
         &>a {
-            height: 40vh;
+            height: 45vh;
             max-height: 800px;
             overflow: hidden;
         }
@@ -108,7 +108,6 @@
     &>h4 {
         font-size: 34px;
         font-weight: 300;
-        z-index: 1;
     }
 
     &>img {
@@ -120,6 +119,7 @@
         max-height: 100%;
         object-fit: contain;
         object-position: 100%;
+        z-index: -1;
     }
 }
 

@@ -3,20 +3,123 @@
 
 import Image from 'next/image';
 import styles from './Product.module.scss'
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useContainerDimensions } from '@/app/hooks/useContainerDimentions';
+import { channel } from 'diagnostics_channel';
 
 const Product = (
     {
         product
     }: {
-        product: any
+        product: {
+            name: string,
+            productId: number,
+            filters: {
+                elems: {
+                    color: string,
+                    hex: string,
+                    values: string[]
+                }[],
+                selected: number,
+                name: "string"
+                type: "Color" | "Text"
+            }[],
+            productConfigurations: {
+                configurationId: string,
+                totalPrice: number,
+                characteristics: {
+                    name: string
+                    type: "Color" | "Text",
+                    value: string
+                }[]
+            }[],
+        }
     }
 ) => {
 
-    console.log(product);
+    const [productState, setproductState] = useState(() => {
+        product.filters = product.filters.map(el => {
+            el.selected = 0
+            return el
+        })
+        return product
+    })
 
-    const ok = [1, 2, 3, 4, 5, 6]
+
+
+
+
+
+
+    const [imgList, setImgList] = useState<string[]>(() => {
+        const color = productState.filters.find(el => el.type == 'Color')
+        if (!color) return []
+        return color.elems[color.selected].values
+    })
+
+    const [selectedConfig, setSelectedConfig] = useState(() => {
+        for (let index = 0; index < productState.productConfigurations.length; index++) {
+            const productConf = productState.productConfigurations[index];
+            const res = []
+            for (let charind = 0; charind < productConf.characteristics.length; charind++) {
+                const char = productConf.characteristics[charind];
+                for (let filterIndex = 0; filterIndex < productState.filters.length; filterIndex++) {
+                    const filter = productState.filters[filterIndex];
+                    const selected = filter.elems[filter.selected]
+
+                    if (filter.type != char.type) continue
+                    if (filter.name != char.name) continue
+                    if (filter.type == 'Color') {
+                        if (selected.color != char.value) continue
+                    }
+                    if (filter.type == 'Text') {
+                        if (selected.values[0] != char.value) continue
+                    }
+                    res.push(true)
+                }
+            }
+            if (res.length == productConf.characteristics.length) {
+                return productConf
+            }
+        }
+    })
+
+    useEffect(() => {
+        for (let index = 0; index < productState.productConfigurations.length; index++) {
+            const productConf = productState.productConfigurations[index];
+            const res = []
+            for (let charind = 0; charind < productConf.characteristics.length; charind++) {
+                const char = productConf.characteristics[charind];
+                for (let filterIndex = 0; filterIndex < productState.filters.length; filterIndex++) {
+                    const filter = productState.filters[filterIndex];
+                    const selected = filter.elems[filter.selected]
+
+                    if (filter.type != char.type) continue
+                    if (filter.name != char.name) continue
+                    if (filter.type == 'Color') {
+                        if (selected.color != char.value) continue
+                    }
+                    if (filter.type == 'Text') {
+                        if (selected.values[0] != char.value) continue
+                    }
+                    res.push(true)
+                }
+            }
+            if (res.length == productConf.characteristics.length) {
+                setSelectedConfig(productConf)
+                return
+            }
+        }
+    }, [productState])
+
+    useEffect(() => {
+        setImgList((_) => {
+            const color = productState.filters.find(el => el.type == 'Color')
+            if (!color) return []
+            return color.elems[color.selected].values
+        })
+    }, [productState])
+
 
 
     const images = useRef<null | HTMLDivElement>(null)
@@ -33,81 +136,105 @@ const Product = (
             }}>
                 <div className={styles.carousel}>
                     <button onClick={() => {
-                        if (carousel == 0) return
+                        if (carousel == 0) {
+                            setCarousel(imgList.length - 1)
+                            return
+                        }
                         setCarousel(prev => --prev)
-                    }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
-                    <div className={styles.imagesWrapper}>
-                        <div ref={images} className={styles.images} style={{
+                    }} className={`${styles.arrow} tap`}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                    <div ref={images} className={styles.imagesWrapper}>
+                        <div className={styles.images} style={{
                             // +20 потому что gap
                             transform: `translateX(-${(imageWidth + 20) * carousel}px)`
                         }}>
-                            <img src="/iphonecat.png" alt="iphone" />
-                            <img src="/airpods.png" alt="iphone" />
-                            <img src="/iphonecat.png" alt="iphone" />
-                            <img src="/iphonecat.png" alt="iphone" />
-                            <img src="/iphonecat.png" alt="iphone" />
-                            <img src="/iphonecat.png" alt="iphone" />
+                            {
+                                imgList.map((img) => {
+                                    return <img key={img} width={imageWidth} src={img} alt="iphone" />
+                                })
+                            }
                         </div>
                     </div>
                     <button onClick={() => {
                         if (!images.current) return
-                        if (carousel == 5) return
+                        if (carousel == imgList.length - 1) {
+                            setCarousel(0)
+                            return
+                        }
                         setCarousel(prev => ++prev)
-                    }} style={{
-                        transform: 'rotateZ(180deg)'
-                    }} className={styles.arrow}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                    }} className={styles.arrowRight}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
                 </div>
                 <div className={styles.dots}>
                     {
-                        ok.map((index, ind) => <div key={index} className={`${ind == carousel ? styles.active : ''}`}></div>)
+                        imgList.map((index, ind) => <div key={index} className={`${ind == carousel ? styles.active : ''}`}></div>)
                     }
                 </div>
             </div>
             <div className={styles.main}>
                 <h4 className={styles.name}>{product.name}</h4>
-                <p className={styles.desc}>Стандартная версия со слотом под физическую сим-карту. Пик инноваций в дизайне. iPhone 15 Pro Max представляет собой воплощение эстетики и функциональности. Впервые рамка iPhone выполнена из титана, благодаря чему устройство является самым легким iPhone Pro в истории и способно выдерживать самые серьезные нагрузки.</p>
+                <p className={styles.desc}>{"ТУТ БУДЕТ ОПИСАНИЕ"}</p>
                 <div className={styles.configuraion}>
-                    <div>
-                        <p>Объем памяти:</p>
-                        <div className={styles.filters}>
-                            <button className={`${styles.filter} ${styles.selected}`}>256 ГБ</button>
-                            <button className={styles.filter}>512 ГБ</button>
-                            <button className={styles.filter}>1 ТБ</button>
-                        </div>
-                    </div>
-                    <div>
-                        <p>Цвет:</p>
-                        <div className={styles.colorFilters}>
-                            <button style={{
-                                backgroundColor: '#ABA69B'
-                            }} className={`${styles.colorFilter}`}></button>
-                            <button style={{
-                                backgroundColor: '#373C4B'
-                            }} className={styles.colorFilter}></button>
-                            <button style={{
-                                backgroundColor: '#F0EFEB'
-                            }} className={styles.colorFilter}></button>
-                            <button style={{
-                                backgroundColor: '#272826'
-                            }} className={styles.colorFilter}></button>
-                        </div>
-                    </div>
+                    {
+                        productState.filters.map((filter, filterIndex) => {
+                            return filter.type == "Text" ?
+                                <div key={filter.name}>
+                                    <p>{filter.name}</p>
+                                    <div className={styles.filters}>
+                                        {
+                                            filter.elems.map((elem, elemIndex) => {
+                                                return <button onClick={() => {
+                                                    if (filter.selected == elemIndex) return
+                                                    setproductState(prev => {
+                                                        const newF = JSON.parse(JSON.stringify(prev))
+                                                        newF.filters[filterIndex].selected = elemIndex
+                                                        return newF
+                                                    })
+                                                }} key={elem.values[0]} className={`${styles.filter} ${filter.selected == elemIndex ? styles.selected : ""}`}>{elem.values[0]}</button>
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                                :
+                                filter.elems.filter(fil => fil.color).length != 1 && <div key={filter.name}>
+                                    <p>Цвет:</p>
+                                    <div className={styles.colorFilters}>
+                                        {
+                                            filter.elems.map((elem, elemIndex) => {
+                                                return <button onClick={() => {
+                                                    if (filter.selected == elemIndex) return
+                                                    setproductState(prev => {
+                                                        const newF = JSON.parse(JSON.stringify(prev))
+                                                        newF.filters[filterIndex].selected = elemIndex
+                                                        return newF
+                                                    })
+                                                }} key={filter.name + elem.color} style={{
+                                                    backgroundColor: "#" + elem.hex
+                                                }} className={`${styles.colorFilter} ${filter.selected == elemIndex ? styles.selected : ""}`}><Image className={styles.rollingStick} src={'/rollingStick.svg'} alt='rollingStick' width={13} height={9} /></button>
+                                            })
+                                        }
+                                    </div>
+                                </div>
+                        })
+                    }
                 </div>
                 <div className={styles.price}>
                     <button onClick={() => {
-                        const arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
-                        const index = arr.findIndex(el => el.productId == product.productId)
-                        
+                        const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
+                        const index = arr.findIndex(el => el.config.configurationId == selectedConfig?.configurationId)
+
                         if (index >= 0) {
-                            arr[index].count ++
-                        } else  {
-                            arr.push(product)
-                            arr[arr.length-1].count = 1
+                            arr[index].count++
+                        } else {
+                            arr.push({
+                                name: productState.name,
+                                config: selectedConfig,
+                                img: imgList[0]
+                            })
+                            arr[arr.length - 1].count = 1
                         }
-                        localStorage.setItem("cart", JSON.stringify(arr))
+                        sessionStorage.setItem("cart", JSON.stringify(arr))
                         window.dispatchEvent(new Event("storage"));
                     }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
-                    <p>134 990 ₽</p>
+                    <p>{selectedConfig?.totalPrice} ₽</p>
                 </div>
             </div>
         </div>

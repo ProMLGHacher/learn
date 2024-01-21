@@ -2,7 +2,7 @@
 
 .wrapper {
     background-color: black;
-    min-height: 90vh;
+    min-height: 100dvh;
     color: white;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,13 @@
     font-weight: 700;
 
     margin-bottom: 6px;
+
+
+    transform: translateY(300px);
+    opacity: 0.0;
+
+    animation: slideInBottom .7s forwards cubic-bezier(0.000, 0.085, 0.000, 1.015);;
+    animation-delay: 0s;
 }
 
 @media screen and (max-width: adaptive.$sm) {
@@ -37,6 +44,12 @@
     text-align: center;
 
     margin-bottom: 32px;
+
+    transform: translateY(300px);
+    opacity: 0.0;
+
+    animation: slideInBottom .7s forwards cubic-bezier(0.000, 0.085, 0.000, 1.015);;
+    animation-delay: .1s;
 }
 
 .byButton {
@@ -53,6 +66,12 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    transform: translateY(300px);
+    opacity: 0.0;
+
+    animation: slideInBottom .7s forwards cubic-bezier(0.000, 0.085, 0.000, 1.015);;
+    animation-delay: .2s;
 }
 
 .byLink {
@@ -61,6 +80,37 @@
 
 .img {
     align-self: flex-start;
+
+    margin-top: 40px;
+
+    transform: translateX(200vw);
+
+    animation: slideInRight .7s forwards cubic-bezier(0.000, 0.085, 0.000, 1.015);;
+    animation-delay: .3s;
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(200vw);
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInBottom {
+    0% {
+        transform: translateY(300px);
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
 }
 
 @media screen and (max-width: adaptive.$sm) {
@@ -81,5 +131,8 @@
         bottom: 0;
         justify-self: flex-end;
         content: url('/iphones.png');
+
+        animation: slideInBottom .3s forwards;
+        animation-delay: .3s;
     }
 }

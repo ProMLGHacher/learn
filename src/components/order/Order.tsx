@@ -1,14 +1,26 @@
 'usr client';
 
-import { createPortal } from 'react-dom'
 import styles from './Order.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 
 const Order = (props: {
-    cart: any
+    cart:
+    {
+        name: string,
+        config: {
+            configurationId: string;
+            totalPrice: number;
+            characteristics: {
+                name: string;
+                type: "Color" | "Text";
+                value: string;
+            }[]
+        },
+        img: string,
+        count: number | undefined
+    }[]
 }) => {
-
 
     return (
         <>
@@ -43,46 +55,49 @@ const Order = (props: {
                                 <p>Коментарий</p>
                                 <input type="text" />
                             </div>
-                            <button className={styles.submit} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
+                            <button className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
                             <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={''}>персональных данных</Link></p>
                         </form>
                         <div className={styles.reverse}>
                             <h4 className={styles.tlte}>Оформить заказ</h4>
                             <div className={styles.products}>
                                 {
-                                    props.cart.map((prod: any, index: number) =>
-                                        <div className={styles.product} key={prod + index}>
+                                    props.cart.map((prod, index: number) =>
+                                        <div className={styles.product} key={prod.config.configurationId}>
                                             <div className={styles.info}>
-                                                <img src="/airpods.png" alt="" />
+                                                <img src={prod.img} alt="" />
                                                 <div>
                                                     <h5>{prod.name}</h5>
-                                                    <p>128 ГБ, Титановый синий</p>
+                                                    <p>{prod.config.characteristics.reduce((acc, el, index) => {
+                                                        if (index != 0) acc += ", "
+                                                        return acc += el.value
+                                                    }, "")}</p>
                                                     <div className={styles.counter}>
                                                         <button onClick={() => {
-                                                            let arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
-                                                            const index = arr.findIndex(el => el.productId == prod.productId)
+                                                            let arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
+                                                            const index = arr.findIndex(el => el.config.configurationId == prod.config.configurationId)
 
                                                             if (index >= 0) {
 
                                                                 if (arr[index].count <= 1) {
-                                                                    arr = arr.filter(fel => fel.productId != prod.productId)
+                                                                    arr = arr.filter(fel => fel.config.configurationId != prod.config.configurationId)
                                                                 } else {
                                                                     arr[index].count--
                                                                 }
 
                                                             }
-                                                            localStorage.setItem("cart", JSON.stringify(arr))
+                                                            sessionStorage.setItem("cart", JSON.stringify(arr))
                                                             window.dispatchEvent(new Event("storage"));
                                                         }}>-</button>
                                                         <p>{prod.count}</p>
                                                         <button onClick={() => {
-                                                            const arr: Array<any> = JSON.parse(localStorage.getItem("cart") || "[]")
-                                                            const index = arr.findIndex(el => el.productId == prod.productId)
+                                                            const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
+                                                            const index = arr.findIndex(el => el.config.configurationId == prod.config.configurationId)
 
                                                             if (index >= 0) {
                                                                 arr[index].count++
                                                             }
-                                                            localStorage.setItem("cart", JSON.stringify(arr))
+                                                            sessionStorage.setItem("cart", JSON.stringify(arr))
                                                             window.dispatchEvent(new Event("storage"));
                                                         }}>+</button>
                                                     </div>
@@ -90,17 +105,17 @@ const Order = (props: {
                                             </div>
                                             <div className={styles.pricedelete}>
                                                 <button onClick={() => {
-                                                    let arr = JSON.parse(localStorage.getItem("cart") || "[]")
+                                                    let arr = JSON.parse(sessionStorage.getItem("cart") || "[]")
                                                     if (Array.isArray(arr)) {
                                                         console.log(arr);
                                                         console.log(prod);
 
-                                                        arr = arr.filter(fel => fel.productId != prod.productId)
+                                                        arr = arr.filter(fel => fel.config.configurationId != prod.config.configurationId)
                                                     }
-                                                    localStorage.setItem("cart", JSON.stringify(arr))
+                                                    sessionStorage.setItem("cart", JSON.stringify(arr))
                                                     window.dispatchEvent(new Event("storage"));
                                                 }}><Image src={'/exit.svg'} alt='удалить товар' width={15} height={15} /></button>
-                                                <p>114 990 ₽</p>
+                                                <p>{prod.config.totalPrice} ₽</p>
                                             </div>
                                         </div>
                                     )
@@ -109,11 +124,11 @@ const Order = (props: {
                             <div className={styles.divider}></div>
                             <div className={styles.finalPrice}>
                                 <p>Итого:</p>
-                                <p>114 990 ₽</p>
+                                <p>{props.cart.reduce((acc, el) => acc+=el.config.totalPrice * (el.count ? el.count : 0), 0)} ₽</p>
                             </div>
                             <div className={styles.promoCode}>
                                 <input type="text" placeholder='Промокод' />
-                                <button>Применить</button>
+                                <button className='tap'>Применить</button>
                             </div>
                         </div>
                     </div>

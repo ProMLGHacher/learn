@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './globals.scss'
 import TopHeader from '@/components/TopHeader/TopHeader'
 import Header from '@/components/Header/Header'
 import { SF } from './fonts/font'
