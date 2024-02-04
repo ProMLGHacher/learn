@@ -17,10 +17,9 @@ const getProducts = async (category: string, filter: string | undefined) => {
     })
     const json: Array<any> = await data.json()
     if (json.length == 0) {
-        redirect('/')
+        
+        return redirect('/')
     }
-    
-    
     return json
 
     // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
@@ -37,6 +36,9 @@ const getFilters = async (category: string) => {
         throw new Error('')
     }
     const json: Array<any> = await data.json()
+    if (json.length == 0) {
+        return redirect('/')
+    }
     return json
 }
 
@@ -50,10 +52,15 @@ const Page = async ({
     }) => {
 
     // const data = await getData(params.filter ? params.filter[0] : "all")
-    const getProductsData = getProducts(params.filter[0], params.filter[1])
     const getFiltersData = getFilters(params.filter[0])
+    const getProductsData = getProducts(params.filter[0], params.filter[1])
 
     const [products, filters] = await Promise.all([getProductsData, getFiltersData])
+
+    console.log(products);
+    console.log(filters);
+    
+    
 
 
     return (
