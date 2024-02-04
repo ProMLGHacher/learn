@@ -13,9 +13,9 @@ const PortableHeader = () => {
                     <Link className={styles.navItem} href={"/catalog/Watch"}>Watch</Link>
                     <Link className={styles.navItem} href={"/catalog/Mac"}>Mac</Link>
                     <Link className={styles.navItem} href={"/catalog/iPad"}>iPad</Link>
-                    <Link className={styles.navItem} href={"/catalog/Аксессуары"}>Dyson</Link>
-                    <Link className={styles.navItem} href={"/catalog/Игровые приставки"}>Аксесуары</Link>
-                    <Link className={styles.navItem} href={"/catalog/Dyson"}>Игровые приставки</Link>
+                    <Link className={styles.navItem} href={"/catalog/accessories"}>Аксесуары</Link>
+                    <Link className={styles.navItem} href={"/catalog/consoles"}>Игровые приставки</Link>
+                    <Link className={styles.navItem} href={"/catalog/Dyson"}>Dyson</Link>
                 </nav>
             </div>
             <div className={styles.rightSide}>

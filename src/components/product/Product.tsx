@@ -5,35 +5,46 @@ import Image from 'next/image';
 import styles from './Product.module.scss'
 import { useEffect, useRef, useState } from 'react';
 import { useContainerDimensions } from '@/app/hooks/useContainerDimentions';
-import { channel } from 'diagnostics_channel';
+
+
+export interface Product {
+    productId: string
+    description: string
+    name: string
+    filters: Filter[]
+    productConfigurations: ProductConfiguration[]
+  }
+  
+  export interface Filter {
+    name: string
+    type: string
+    elems: Elem[]
+    selected: number
+  }
+  
+  export interface Elem {
+    color: string
+    hex: string
+    values: string[]
+  }
+  
+  export interface ProductConfiguration {
+    configurationId: string
+    characteristics: Characteristic[]
+    totalPrice: number
+  }
+  
+  export interface Characteristic {
+    type: string
+    name: string
+    value: string
+  }
 
 const Product = (
     {
         product
     }: {
-        product: {
-            name: string,
-            productId: number,
-            filters: {
-                elems: {
-                    color: string,
-                    hex: string,
-                    values: string[]
-                }[],
-                selected: number,
-                name: "string"
-                type: "Color" | "Text"
-            }[],
-            productConfigurations: {
-                configurationId: string,
-                totalPrice: number,
-                characteristics: {
-                    name: string
-                    type: "Color" | "Text",
-                    value: string
-                }[]
-            }[],
-        }
+        product: Product
     }
 ) => {
 
@@ -171,7 +182,7 @@ const Product = (
             </div>
             <div className={styles.main}>
                 <h4 className={styles.name}>{product.name}</h4>
-                <p className={styles.desc}>{"ТУТ БУДЕТ ОПИСАНИЕ"}</p>
+                <p className={styles.desc}>{product.description}</p>
                 <div className={styles.configuraion}>
                     {
                         productState.filters.map((filter, filterIndex) => {
@@ -217,24 +228,30 @@ const Product = (
                     }
                 </div>
                 <div className={styles.price}>
-                    <button onClick={() => {
-                        const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
-                        const index = arr.findIndex(el => el.config.configurationId == selectedConfig?.configurationId)
+                    {
+                        selectedConfig?.totalPrice ?
+                            <>
+                                <button onClick={() => {
+                                    const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
+                                    const index = arr.findIndex(el => el.config.configurationId == selectedConfig?.configurationId)
 
-                        if (index >= 0) {
-                            arr[index].count++
-                        } else {
-                            arr.push({
-                                name: productState.name,
-                                config: selectedConfig,
-                                img: imgList[0]
-                            })
-                            arr[arr.length - 1].count = 1
-                        }
-                        sessionStorage.setItem("cart", JSON.stringify(arr))
-                        window.dispatchEvent(new Event("storage"));
-                    }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
-                    <p>{selectedConfig?.totalPrice} ₽</p>
+                                    if (index >= 0) {
+                                        arr[index].count++
+                                    } else {
+                                        arr.push({
+                                            name: productState.name,
+                                            config: selectedConfig,
+                                            img: imgList[0]
+                                        })
+                                        arr[arr.length - 1].count = 1
+                                    }
+                                    sessionStorage.setItem("cart", JSON.stringify(arr))
+                                    window.dispatchEvent(new Event("storage"));
+                                }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
+                                <p>{selectedConfig?.totalPrice} ₽</p>
+                            </>
+                            : <p>товара нет в наличии</p>
+                    }
                 </div>
             </div>
         </div>

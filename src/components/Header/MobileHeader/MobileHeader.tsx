@@ -25,9 +25,9 @@ const MobileHeader = () => {
           <Link onClick={exitClickHandler} href={"/catalog/Watch"}>Watch</Link>
           <Link onClick={exitClickHandler} href={"/catalog/Mac"}>Mac</Link>
           <Link onClick={exitClickHandler} href={"/catalog/iPad"}>iPad</Link>
-          <Link onClick={exitClickHandler} href={"/catalog/Аксессуары"}>Dyson</Link>
-          <Link onClick={exitClickHandler} href={"/catalog/Игровые приставки"}>Аксесуары</Link>
-          <Link onClick={exitClickHandler} href={"/catalog/Dyson"}>Игровые приставки</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/accessories"}>Аксесуары</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/consoles"}>Игровые приставки</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/Dyson"}>Dyson</Link>
         </div>
         <div className={styles.divider}></div>
         <nav>

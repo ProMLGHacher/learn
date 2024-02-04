@@ -12,7 +12,8 @@ const getProducts = async (category: string, filter: string | undefined) => {
 
     const data = await fetch(`${BASE_URL}/api/products?deviceModel=${filter || category}`, {
         next: {
-            revalidate: 10
+            revalidate: 86_400,
+            tags: ['products']
         }
     })
     const json: Array<any> = await data.json()
@@ -28,7 +29,8 @@ const getProducts = async (category: string, filter: string | undefined) => {
 const getFilters = async (category: string) => {
     const data = await fetch(`${BASE_URL}/api/deviceModels?categoryName=${category}`, {
         next: {
-            revalidate: 10
+            revalidate: 86_400,
+            tags: ['filters']
         }
     })
 
