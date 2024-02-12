@@ -10,9 +10,8 @@ const TopHeader = () => {
                 <div className={styles.innerNav}>
                     <Link className={styles.link} href={"/#categories"}>Каталог</Link>
                     <Link className={styles.link} href={"/warranty"}>Гарантия</Link>
-                    <Link className={styles.link} href={"/"}>Сервисный центр</Link>
-                    <Link className={styles.link} href={"/"}>Программа лояльности</Link>
-                    <Link className={styles.link} href={"/"}>Доставка и оплата</Link>
+                    <Link className={styles.link} href={"/service"}>Сервисный центр</Link>
+                    <Link className={styles.link} href={"/shipping_and_payment"}>Доставка и оплата</Link>
                     <Link className={styles.link} href={"/contacts"}>Контакты</Link>
                 </div>
                 <div className={styles.innerNav}>

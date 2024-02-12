@@ -33,9 +33,8 @@ const MobileHeader = () => {
         <nav>
           <Link onClick={exitClickHandler} href={"/#categories"}>Каталог</Link>
           <Link onClick={exitClickHandler} href={"/warranty"}>Гарантия</Link>
-          <Link onClick={exitClickHandler} href={"#categories"}>Сервисный центр</Link>
-          <Link onClick={exitClickHandler} href={"#categories"}>Программа лояльности</Link>
-          <Link onClick={exitClickHandler} href={"#categories"}>Доставка и оплата</Link>
+          <Link onClick={exitClickHandler} href={"/service"}>Сервисный центр</Link>
+          <Link onClick={exitClickHandler} href={"/shipping_and_payment"}>Доставка и оплата</Link>
           <Link onClick={exitClickHandler} href={"/contacts"}>Контакты</Link>
         </nav>
         <div className={styles.divider}></div>

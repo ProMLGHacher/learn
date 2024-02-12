@@ -1,7 +1,9 @@
 import Image from 'next/image'
-import styles from './Blog.module.scss'
+import styles from './Blogs.module.scss'
 import Link from 'next/link'
 import { BASE_URL } from '@/utils/conts'
+import Near from '../near/Near'
+import Footer from '../footer/Footer'
 
 const getPosts = async (): Promise<{
     id: string,
@@ -16,11 +18,11 @@ const getPosts = async (): Promise<{
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "count": 3,
+            "count": 9999999,
             "loadPosition": 0
         }),
         next: {
-            revalidate: 10,
+            revalidate: 86400,
             tags: ['blog']
         }
     })
@@ -31,11 +33,9 @@ const getPosts = async (): Promise<{
     return data.json()
 }
 
-const Blog = async () => {
+const Blogs = async () => {
 
     const blog = await getPosts()
-
-    
 
     return (
         <>
@@ -52,17 +52,16 @@ const Blog = async () => {
                                     <p style={{
                                         whiteSpace: 'pre-line'
                                     }}>{el.shortDescription}</p>
-                                    <a className={`tap`}  href={`/blog/${el.id}`}>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></a>
+                                    <a className={`tap`} href={`/blog/${el.id}`}>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></a>
                                 </div>)
                         }
                     </div>
-                    <div className={styles.viewAll}>
-                        <Link className={`tap`} href={'/blog'}>Посмотреть все</Link>
-                    </div>
                 </div> : <></>
             }
+            <Near />
+            <Footer />
         </>
     )
 }
 
-export default Blog
+export default Blogs
