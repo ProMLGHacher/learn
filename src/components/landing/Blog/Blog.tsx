@@ -20,7 +20,7 @@ const getPosts = async (): Promise<{
             "loadPosition": 0
         }),
         next: {
-            revalidate: 10,
+            revalidate: 86400,
             tags: ['blog']
         }
     })

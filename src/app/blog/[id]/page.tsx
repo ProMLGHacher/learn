@@ -17,7 +17,7 @@ const getPost = async (id: string): Promise<{
             "Content-Type": "application/json"
         },
         next: {
-            revalidate: 10,
+            revalidate: 86400,
             tags: ['blog']
         }
     })
