@@ -10,23 +10,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(10px, 3.5vw, 50px);
     gap: 10px;
 
     padding-block: 65px;
-}
-
-@media screen and (max-width: adaptive.$md) {
-    .title {
-        font-size: 4vw;
-    }
+    font-size: 40px;
 }
 
 @media screen and (max-width: adaptive.$sm) {
     .title {
         flex-direction: column;
         text-align: center;
-        font-size: 7vw;
+        font-size: 28px;
     }
 }
 

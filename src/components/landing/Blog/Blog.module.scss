@@ -11,14 +11,8 @@
     align-items: center;
     justify-content: center;
     padding-block: 95px 45px;
-    font-size: clamp(10px, 3.5vw, 50px);
+    font-size: 40px;
     gap: 8px;
-}
-
-@media screen and (max-width: adaptive.$md) {
-    .title {
-        font-size: 4vw;
-    }
 }
 
 @media screen and (max-width: adaptive.$sm) {
@@ -26,7 +20,7 @@
         padding-block: 35px 28px;
         flex-direction: column;
         text-align: center;
-        font-size: 7vw;
+        font-size: 28px;
     }
 }
 

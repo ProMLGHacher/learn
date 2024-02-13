@@ -159,7 +159,7 @@ const Order = (props: {
                                 }} type="text" />
                             </div>
                             <button onClick={submit} className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
-                            <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={''}>персональных данных</Link></p>
+                            <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={'/policy.pdf'}>персональных данных</Link></p>
                         </form>
                         <div className={styles.reverse}>
                             <h4 className={styles.tlte}>Оформить заказ</h4>

@@ -19,8 +19,8 @@ const Contacts = () => {
         <div>
           <p className={styles.smallTitle}>связь с нами</p>
           <a className={styles.phone} href="tel:+79878476868">+7 (987) 847-68-68</a>
-          <Link href={'#'} className={styles.sm}>Whats’app</Link>
-          <Link href={'#'} className={styles.sm}>Telegram</Link>
+          <Link href={'https://wa.me/79619379196'} target='_blank' className={styles.sm}>Whats’app</Link>
+          <Link href={'https://t.me/iamgavr'} target='_blank' className={styles.sm}>Telegram</Link>
         </div>
       </div>
       

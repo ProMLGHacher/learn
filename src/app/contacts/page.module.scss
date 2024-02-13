@@ -8,11 +8,22 @@
     justify-content: center;
     padding-block: 60px;
     gap: 14px;
-    font-size: 45px;
     font-weight: 600;
     max-width: 1920px;
     width: 90%;
     margin-inline: auto;
+
+    &>h3 {
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .title {
+        &>h3 {
+            font-size: 28px;
+        }
+    }
 }
 
 .contacts {

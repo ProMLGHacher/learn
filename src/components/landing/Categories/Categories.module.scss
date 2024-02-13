@@ -14,7 +14,7 @@
 
 
     &>h2 {
-        font-size: clamp(10px, 3.5vw, 40px);
+        font-size: 40px;
     }
 
     padding-block: 65px;
@@ -23,9 +23,6 @@
 @media screen and (max-width: adaptive.$md) {
     .title {
         padding-block: 36px 23px;
-        &>h2 {
-            font-size: 4vw;
-        }
     }
 }
 
@@ -34,7 +31,7 @@
         flex-direction: column;
         text-align: center;
         &>h2 {
-            font-size: 6vw;
+            font-size: 28px;
         }
     }
 }

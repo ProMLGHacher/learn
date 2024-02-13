@@ -15,8 +15,8 @@ const TopHeader = () => {
                     <Link className={styles.link} href={"/contacts"}>Контакты</Link>
                 </div>
                 <div className={styles.innerNav}>
-                    <Link className={styles.link} href={"/"}>Whats’app</Link>
-                    <Link className={styles.link} href={"/"}>Telegram</Link>
+                    <Link className={styles.link} href={"https://wa.me/79619379196"} target='_blank'>Whats’app</Link>
+                    <Link className={styles.link} href={"https://t.me/iamgavr"} target='_blank'>Telegram</Link>
                 </div>
             </div>
         </nav>

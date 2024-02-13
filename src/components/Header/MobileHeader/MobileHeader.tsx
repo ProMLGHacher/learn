@@ -17,7 +17,7 @@ const MobileHeader = () => {
 
   return (
     <>
-      <div className={`${styles.slider} ${active ? styles.active : ""}`}>
+      <aside className={`${styles.slider} ${active ? styles.active : ""}`}>
         <button onClick={exitClickHandler}><Image src={'/exit.svg'} alt='close' width={18} height={18} /> </button>
         <div className={styles.categories}>
           <Link onClick={exitClickHandler} href={"/catalog/Iphone"}>iPhone</Link>
@@ -44,11 +44,11 @@ const MobileHeader = () => {
             <Link href={'tel:+79878476868'}>+7 (987) 847-68-68</Link>
           </div>
           <div className={styles.sm}>
-            <Link href={'#'}>Whats’app</Link>
-            <Link href={'#'}>Telegram</Link>
+            <Link href={'https://wa.me/79619379196'}>Whats’app</Link>
+            <Link href={'https://t.me/iamgavr'}>Telegram</Link>
           </div>
         </div>
-      </div>
+      </aside>
       <div className={styles.wrapper}>
         <div className={styles.leftSide}>
           <button onClick={burgerClickHandler}><Image src={'/burger.svg'} width={22} height={10} alt='burger' /></button>

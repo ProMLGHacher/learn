@@ -7,7 +7,10 @@ import Image from 'next/image'
 const page = () => {
   return (
     <div>
-
+        <h1 style={{
+            textAlign: 'center',
+            marginBlock: '60px'
+        }}>Доставка и оплата</h1>
         <div className={styles.wrapper}>
             <div>
                 <Image src={'/money.svg'} alt='' width={120} height={120} />

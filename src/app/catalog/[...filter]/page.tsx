@@ -58,9 +58,6 @@ const Page = async ({
     const getProductsData = getProducts(params.filter[0], params.filter[1])
 
     const [products, filters] = await Promise.all([getProductsData, getFiltersData])
-
-    console.log(products);
-    console.log(filters);
     
     
 
