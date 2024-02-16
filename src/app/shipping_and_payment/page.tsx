@@ -9,8 +9,8 @@ const page = () => {
     <div>
         <h1 style={{
             textAlign: 'center',
-            marginBlock: '60px'
-        }}>Доставка и оплата</h1>
+            marginBlock: '60px',
+        }} className={styles.ttl}>Доставка и оплата</h1>
         <div className={styles.wrapper}>
             <div>
                 <Image src={'/money.svg'} alt='' width={120} height={120} />
@@ -25,7 +25,7 @@ const page = () => {
             <div>
                 <Image src={'/camera.svg'} alt='' width={102} height={102} />
                 <h3>QR-код</h3>
-                <p>Заказы также могут быть оплачены QR-кодом на снятие наличных. Это безопасно и быстро. </p>
+                <p>Оплата по QR через Систему быстрых платежей. </p>
             </div>
         </div>
 

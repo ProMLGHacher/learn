@@ -16,11 +16,15 @@ const getProducts = async (category: string, filter: string | undefined) => {
             tags: ['products']
         }
     })
+    console.log(data);
+    
     const json: Array<any> = await data.json()
+    console.log(json);
     if (json.length == 0) {
         
         return redirect('/')
     }
+    
     return json
 
     // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
@@ -52,6 +56,9 @@ const Page = async ({
             filter: [string, string]
         }
     }) => {
+
+        console.log(params.filter);
+        
 
     // const data = await getData(params.filter ? params.filter[0] : "all")
     const getFiltersData = getFilters(params.filter[0])

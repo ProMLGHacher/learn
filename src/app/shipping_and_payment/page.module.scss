@@ -42,3 +42,13 @@
         }
     }
 }
+
+.ttl {
+    font-size: 40px;
+}
+
+@media screen and (max-width: adaptive.$sm) {
+    .ttl {
+        font-size: 28px;
+    }
+}
