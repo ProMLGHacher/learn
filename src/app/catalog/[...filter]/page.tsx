@@ -17,14 +17,14 @@ const getProducts = async (category: string, filter: string | undefined) => {
         }
     })
     console.log(data);
-    
+
     const json: Array<any> = await data.json()
     console.log(json);
     if (json.length == 0) {
-        
+
         return redirect('/')
     }
-    
+
     return json
 
     // return { "shop": [{ "title": "iphone 14" }, { "title": "iphone 15" }] }
@@ -57,23 +57,45 @@ const Page = async ({
         }
     }) => {
 
-        console.log(params.filter);
-        
+    console.log(params.filter);
+
 
     // const data = await getData(params.filter ? params.filter[0] : "all")
     const getFiltersData = getFilters(params.filter[0])
     const getProductsData = getProducts(params.filter[0], params.filter[1])
 
     const [products, filters] = await Promise.all([getProductsData, getFiltersData])
-    
-    
 
+
+
+    const getName = (param: string) => {
+        switch (param) {
+            case 'Iphone':
+                return 'iPhone'
+            case 'AirPods':
+                return 'AirPods'
+            case 'Watch':
+                return 'Watch'
+            case 'Mac':
+                return 'Mac'
+            case 'iPad':
+                return 'iPad'
+            case 'accessories':
+                return 'Акссессуары'
+            case 'consoles':
+                return 'Консоли'
+            case 'Dyson':
+                return 'Dyson'
+            default:
+                return ''
+        }
+    }
 
     return (
         <main>
             <Cart />
             <div className={styles.header}>
-                <p>Главная {'>'} Каталог {'>'} {decodeURI(`${params.filter[0]}`)}</p>
+                <p>Главная {'>'} Каталог {'>'} {getName(decodeURI(`${params.filter[0]}`))}</p>
                 <Select caregory={decodeURI(`${params.filter[0]}`)} filters={filters} />
             </div>
             <div className={styles.wrap} style={{
