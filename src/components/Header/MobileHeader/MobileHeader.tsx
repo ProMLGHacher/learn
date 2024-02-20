@@ -54,7 +54,7 @@ const MobileHeader = () => {
           <button onClick={burgerClickHandler}><Image src={'/burger.svg'} width={22} height={10} alt='burger' /></button>
         </div>
         <Link href={'/'} className={styles.center}>
-          <Image src={'/logo.png'} width={77} height={21.68} alt='logo' />
+          <Image src={'/iStore.svg'} width={77} height={21.68} alt='logo' />
         </Link>
         <div className={styles.rightSide}>
           <Link href={'tel:+79878476868'}><Image src={'/call.png'} alt='call' width={20} height={20} /></Link>

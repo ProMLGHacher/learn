@@ -126,10 +126,10 @@
     }
 
     .img {
-        width: 100%;
+        width: 85%;
         bottom: 0;
-        justify-self: flex-end;
-        content: url('/iphones.png');
+        justify-self: center;
+        content: url('/iphone15.png');
 
         animation: slideInBottom .3s forwards;
         animation-delay: .3s;

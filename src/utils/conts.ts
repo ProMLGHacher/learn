@@ -1,1 +1,1 @@
-export const BASE_URL = "http://localhost:8090"
+export const BASE_URL = "https://0de3-79-126-115-45.ngrok-free.app"

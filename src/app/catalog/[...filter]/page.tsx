@@ -19,7 +19,6 @@ const getProducts = async (category: string, filter: string | undefined) => {
     console.log(data);
 
     const json: Array<any> = await data.json()
-    console.log(json);
     if (json.length == 0) {
 
         return redirect('/')

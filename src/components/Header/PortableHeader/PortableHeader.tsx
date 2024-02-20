@@ -6,7 +6,7 @@ const PortableHeader = () => {
   return (
     <div className={styles.wrapper}>
             <div className={styles.leftSide}>
-                <Link href={'/'}><Image src={'/logo.png'} width={77} height={21.68} alt='logo' /></Link>
+                <Link href={'/'}><Image src={'/iStore.svg'} width={77} height={21.68} alt='logo' /></Link>
                 <nav className={styles.nav}>
                     <Link className={styles.navItem} href={"/catalog/Iphone"}>iPhone</Link>
                     <Link className={styles.navItem} href={"/catalog/AirPods"}>AirPods</Link>

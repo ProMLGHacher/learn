@@ -6,7 +6,9 @@ const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.wrp}>
-                <Image src={'/logo.svg'} alt='right arrow in by button' width={129} height={36} />
+                <Image style={{
+                    filter: 'invert(100%)'
+                }} src={'/iStore.svg'} alt='right arrow in by button' width={129} height={36} />
                 <nav className={styles.nav}>
                     <Link className={styles.navItem} href={"/catalog/Iphone"}>iPhone</Link>
                     <Link className={styles.navItem} href={"/catalog/AirPods"}>AirPods</Link>
