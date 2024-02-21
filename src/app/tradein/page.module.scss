@@ -8,7 +8,7 @@
     align-items: center;
     margin-top: 40px;
     justify-content: space-between;
-    gap: 40px;
+    gap: 60px;
 }
 
 .wrp {
@@ -19,23 +19,29 @@
 }
 
 .h1 {
-    white-space: nowrap;
     font-size: 50px;
     font-weight: 500;
 }
 
 .h5 {
-    white-space: nowrap;
     font-size: 25px;
     font-weight: 300;
     margin-top: 22px;
 }
 
 .img {
-    width: 80%;
+    width: 40%;
     height: auto;
     flex-shrink: 1;
     flex: 1;
+}
+
+.imgMobile {
+    width: 40%;
+    height: auto;
+    flex-shrink: 1;
+    flex: 1;
+    display: none;
 }
 
 @media screen and (max-width: adaptive.$md) {
@@ -63,6 +69,19 @@
     .h5 {
         font-size: 14px;
     }
+
+    .imgMobile {
+        width: 95%;
+        display: block;
+    }
+
+    .img {
+        display: none;
+    }
+}
+
+.how {
+    font-size: 40px;
 }
 
 .wrper {
@@ -98,6 +117,9 @@
 }
 
 @media screen and (max-width: adaptive.$sm) {
+    .how {
+        font-size: 25px;
+    }
     .wrper {
         grid-template-columns: repeat(1, 1fr);
 

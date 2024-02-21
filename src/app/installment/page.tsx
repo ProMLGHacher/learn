@@ -10,6 +10,7 @@ const page = () => {
         <>
             <div className={styles.wrapper}>
                 <div className={styles.wrp}>
+                <Image className={styles.imgmobile} src={'/fall-2023.png'} alt='apple vision pro image' width={754} height={631} />
                     <div>
                         <h1 className={styles.h1}>Платить полностью или<br />по частям - решать вам.</h1>
                         <h5 className={styles.h5}>Хотите новый гаджет от Apple, но нет<br />возможности сразу его оплатить?<br />
@@ -34,7 +35,7 @@ const page = () => {
                         filter: 'invert(100%)'
                     }} src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></Link>
                 </div>
-                <Image className={styles.img} src={'/vision.png'} alt='apple vision pro image' width={754} height={631} />
+                <Image className={styles.img} src={'/fall-2023.png'} alt='apple vision pro image' width={754} height={631} />
             </div>
             <Near />
             <Footer />

@@ -10,9 +10,10 @@ const page = () => {
         <>
             <div className={styles.wrapper}>
                 <div className={styles.wrp}>
+                    <Image className={styles.imgMobile} src={'/iphone_12.png'} alt='apple vision pro image' width={703} height={538} />
                     <div>
                         <h1 className={styles.h1}>Trade-IN</h1>
-                        <h5 className={styles.h5}>Это умный, удобный и экологичный способ покупки новых<br />устройств. Теперь вам есть куда принести свои устройства<br />Apple, которые вы решили обновить, получить при этом выгоду<br />себе и принести пользу окружающей среде.</h5>
+                        <h5 className={styles.h5}>Это умный, удобный и экологичный способ покупки новых устройств. Теперь вам есть куда принести свои устройства Apple, которые вы решили обновить, получить при этом выгоду себе и принести пользу окружающей среде.</h5>
                     </div>
                     <Link href={'/contacts'} className={`tap`} style={{
                         textDecoration: 'none',
@@ -32,11 +33,9 @@ const page = () => {
                         filter: 'invert(100%)'
                     }} src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></Link>
                 </div>
-                <Image className={styles.img} src={'/image2022.png'} alt='apple vision pro image' width={703} height={538} />
+                <Image className={styles.img} src={'/iphone_12.png'} alt='apple vision pro image' width={703} height={538} />
             </div>
-            <h3 style={{
-                fontSize: '40px'
-            }} className={styles.wrapper}>Как это работает?</h3>
+            <h3 className={`${styles.wrapper} ${styles.how}`}>Как это работает?</h3>
             <div className={styles.wrper}>
                 <div>
                     <h3>Принесите своё устройство в любой из магазинов</h3>

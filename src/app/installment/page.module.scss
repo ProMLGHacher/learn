@@ -38,6 +38,15 @@
     flex: 1;
 }
 
+.imgmobile {
+    width: 80%;
+    height: auto;
+    flex-shrink: 1;
+    flex: 1;
+
+    display: none;
+}
+
 @media screen and (max-width: adaptive.$md) {
     .wrapper {
         flex-direction: column;
@@ -62,5 +71,14 @@
     
     .h5 {
         font-size: 14px;
+    }
+
+    .imgmobile {
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .img {
+        display: none;
     }
 }
