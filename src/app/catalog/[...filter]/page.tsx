@@ -65,8 +65,6 @@ const Page = async ({
 
     const [products, filters] = await Promise.all([getProductsData, getFiltersData])
 
-
-
     const getName = (param: string) => {
         switch (param) {
             case 'Iphone':
