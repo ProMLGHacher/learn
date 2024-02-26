@@ -67,7 +67,7 @@ const Page = async ({
 
     const getName = (param: string) => {
         switch (param) {
-            case 'Iphone':
+            case 'iPhone':
                 return 'iPhone'
             case 'AirPods':
                 return 'AirPods'

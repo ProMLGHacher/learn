@@ -20,7 +20,7 @@ const MobileHeader = () => {
       <aside className={`${styles.slider} ${active ? styles.active : ""}`}>
         <button onClick={exitClickHandler}><Image src={'/exit.svg'} alt='close' width={18} height={18} /> </button>
         <div className={styles.categories}>
-          <Link onClick={exitClickHandler} href={"/catalog/Iphone"}>iPhone</Link>
+          <Link onClick={exitClickHandler} href={"/catalog/iPhone"}>iPhone</Link>
           <Link onClick={exitClickHandler} href={"/catalog/AirPods"}>AirPods</Link>
           <Link onClick={exitClickHandler} href={"/catalog/Watch"}>Watch</Link>
           <Link onClick={exitClickHandler} href={"/catalog/Mac"}>Mac</Link>
