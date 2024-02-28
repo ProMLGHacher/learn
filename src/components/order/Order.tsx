@@ -52,10 +52,10 @@ const Order = (props: {
         setPrice(props.cart.reduce((acc, el) => acc += el.config.totalPrice * (el.count ? el.count : 0), 0))
         if (!promoCodeStatus.error && promoCodeStatus.value) {
             if (promoCodeStatus.type == "DiscountAmount") {
-                setPrice(prev=>prev-promoCodeStatus.value!)
+                setPrice(prev => prev - promoCodeStatus.value!)
             }
             if (promoCodeStatus.type == "DiscountPercentage") {
-                setPrice(prev=>prev - (prev / 100 * promoCodeStatus.value!))
+                setPrice(prev => prev - (prev / 100 * promoCodeStatus.value!))
             }
         }
     }, [promoCodeStatus.error, promoCodeStatus.type, promoCodeStatus.value, props.cart])
@@ -81,11 +81,11 @@ const Order = (props: {
     const submit = useCallback(async (e: any) => {
         e?.preventDefault()
         console.log(props.cart.length);
-        
+
         if (!name) return
         if (!phone) return
         if (props.cart.length == 0) return
-        
+
         const data = await fetch(BASE_URL + '/api/order', {
             method: 'POST',
             headers: {
@@ -243,6 +243,17 @@ const Order = (props: {
                                     setPromoCode(e.target.value)
                                 }} type="text" placeholder='Промокод' />
                                 <button onClick={checkPromocode} className='tap'>Применить</button>
+                            </div>
+                            <div style={{
+                                marginTop: '10px',
+                                gap: '12px',
+                                display: 'flex',
+                                alignItems: 'center'
+                            }}>
+                                <Image src={'/search.svg'} alt='нашли цену ниже иконка' width={16} height={16} />
+                                <Link href={'https://t.me/iamgavr'} style={{
+                                    color: 'rgba(0, 0, 0, 0.4)'
+                                }}>Нашли цену ниже?</Link>
                             </div>
                             {
                                 promoCodeStatus.error == true && <p className={styles.promoStatus}>{`${"Промокод не существует"}`}</p>
