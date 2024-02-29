@@ -5,6 +5,7 @@ import Image from 'next/image';
 import styles from './Product.module.scss'
 import { useEffect, useRef, useState } from 'react';
 import { useContainerDimensions } from '@/app/hooks/useContainerDimentions';
+import Link from 'next/link';
 
 
 export interface Product {
@@ -248,9 +249,12 @@ const Product = (
                                     sessionStorage.setItem("cart", JSON.stringify(arr))
                                     window.dispatchEvent(new Event("storage"));
                                 }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
-                                <p>{selectedConfig?.totalPrice} ₽</p>
+                                <p>{selectedConfig?.totalPrice.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}).replace(',', '.')} ₽</p>
                             </>
-                            : <p>товара нет в наличии</p>
+                            : <Link style={{
+                                fontSize: "18px",
+                                color: 'black'
+                            }} href={"https://t.me/iamgavr"}>Связаться с нами</Link>
                     }
                 </div>
             </div>

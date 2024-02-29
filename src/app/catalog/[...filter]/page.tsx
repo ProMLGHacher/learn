@@ -89,7 +89,10 @@ const Page = async ({
     }
 
     return (
-        <main>
+        <main style={{
+            backgroundColor: '#F1F1F1',
+            paddingBottom: '32px'
+        }}>
             <Cart />
             <div className={styles.header}>
                 <p>Главная {'>'} Каталог {'>'} {getName(decodeURI(`${params.filter[0]}`))}</p>
