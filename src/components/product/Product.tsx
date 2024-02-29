@@ -153,7 +153,7 @@ const Product = (
                             return
                         }
                         setCarousel(prev => --prev)
-                    }} className={`${styles.arrow} tap`}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                    }} className={`${styles.arrow} tap`}><Image src={'/Arrow-up.svg'} className={styles.arrows} width={40} height={40} alt='стреклка' /></button>
                     <div ref={images} className={styles.imagesWrapper}>
                         <div className={styles.images} style={{
                             // +20 потому что gap
@@ -173,7 +173,7 @@ const Product = (
                             return
                         }
                         setCarousel(prev => ++prev)
-                    }} className={styles.arrowRight}><Image src={'/Arrow-up.svg'} width={30} height={30} alt='стреклка' /></button>
+                    }} className={`${styles.arrowRight} ${styles.arrows}`}><Image src={'/Arrow-up.svg'} className={styles.arrows} width={40} height={40} alt='стреклка' /></button>
                 </div>
                 <div className={styles.dots}>
                     {

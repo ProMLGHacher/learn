@@ -29,7 +29,8 @@ const Cart = () => {
     return (
         <>
             <Order cart={cart} />
-            <div className={styles.wrp}>
+            <div style={{
+            }} className={styles.wrp}>
                 <a href='#order' className={`${styles.cart} ${animate ? styles.anim : ""}`}>
                     <div className={styles.tooltip}>
                         <p>{cart.reduce((acc, el) => acc += el.count, 0)}</p>
