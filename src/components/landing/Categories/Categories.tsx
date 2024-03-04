@@ -41,11 +41,11 @@ const Categories = () => {
                     <h4>iPad</h4>
                     <img src="\cat\iPad-cat.png" alt="iPad" />
                 </Link>
-                <Link href={'/catalog/Аксессуары'} className={`${styles.category} ${styles.acs} tap`}>
+                <Link href={'/catalog/accessories'} className={`${styles.category} ${styles.acs} tap`}>
                     <h4>Аксессуары</h4>
                     <img src="\cat\usb-cat.png" alt="Аксессуары" />
                 </Link>
-                <Link href={'/catalog/Игровые приставки'} className={`${styles.category} tap`}>
+                <Link href={'/catalog/consoles'} className={`${styles.category} tap`}>
                     <img src="\cat\ps-cat.png" alt="Игровые приставки" />
                     <h4>Игровые приставки</h4>
                 </Link>
