@@ -35,8 +35,6 @@ const Blog = async () => {
 
     const blog = await getPosts()
 
-    
-
     return (
         <>
             {
@@ -48,12 +46,12 @@ const Blog = async () => {
                     <div className={styles.main}>
                         {
                             blog.map((el, index: number) => <div key={el.name + index}>
-                                    <h5>{el.name}</h5>
-                                    <p style={{
-                                        whiteSpace: 'pre-line'
-                                    }}>{el.shortDescription}</p>
-                                    <a className={`tap`}  href={`/blog/${el.id}`}>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></a>
-                                </div>)
+                                <h5>{el.name}</h5>
+                                <p style={{
+                                    whiteSpace: 'pre-line'
+                                }}>{el.shortDescription}</p>
+                                <a className={`tap`} href={`/blog/${el.id}`}>Смотреть <Image src={'/arrow-right-black.svg'} alt='стрлка вправо (смотреть пост)' width={32} height={5} /></a>
+                            </div>)
                         }
                     </div>
                     <div className={styles.viewAll}>

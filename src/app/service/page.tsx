@@ -8,7 +8,7 @@ import Link from 'next/link'
 const page = () => {
     return (
         <>
-            <div style={{
+            <div className={styles.wrp} style={{
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'

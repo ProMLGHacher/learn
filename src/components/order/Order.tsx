@@ -145,12 +145,24 @@ const Order = (props: {
                             </div>
                             <div className={styles.edit}>
                                 <p>Как с вами связаться?</p>
-                                <select value={communicationMethod} onChange={(e) => {
-                                    setCommunicationMethod(e.target.value)
-                                }} name="" id="">
-                                    <option value="Phone">Перезвонить</option>
-                                    <option value="Email">Написать</option>
-                                </select>
+                                <div style={{
+                                    position: 'relative',
+                                    display: 'flex',
+                                    alignItems: 'center'
+                                }}>
+                                    <select value={communicationMethod} onChange={(e) => {
+                                        setCommunicationMethod(e.target.value)
+                                    }} name="" id="">
+                                        <option value="Phone">Перезвонить</option>
+                                        <option value="Email">Написать</option>
+                                    </select>
+                                    <Image style={{
+                                        position: 'absolute',
+                                        right: '10px',
+                                        objectPosition: 'center',
+                                        pointerEvents: 'none'
+                                    }} src={'/dropdown-icon.svg'} alt='' width={16} height={16} />
+                                </div>
                             </div>
                             <div className={styles.edit}>
                                 <p>Коментарий</p>
@@ -218,7 +230,7 @@ const Order = (props: {
                                                     sessionStorage.setItem("cart", JSON.stringify(arr))
                                                     window.dispatchEvent(new Event("storage"));
                                                 }}><Image src={'/exit.svg'} alt='удалить товар' width={15} height={15} /></button>
-                                                <p>{prod.config.totalPrice} ₽</p>
+                                                <p>{prod.config.totalPrice == 0 ? 'Под заказ' : `${prod.config.totalPrice} ₽`}</p>
                                             </div>
                                         </div>
                                     )
@@ -227,7 +239,7 @@ const Order = (props: {
                             <div className={styles.divider}></div>
                             <div className={styles.finalPrice}>
                                 <p>Итого:</p>
-                                <p>{price} ₽</p>
+                                <p>{price} ₽ {props.cart.some(e => e.config.totalPrice == 0) && `(+ товары под заказ)`}</p>
                             </div>
                             <div className={styles.promoCode}>
                                 <input value={promoCode} onChange={(e) => {

@@ -232,7 +232,11 @@ const Product = (
                     {
                         selectedConfig?.totalPrice ?
                             <>
-                                <button onClick={() => {
+                                <a style={{
+                                cursor: 'pointer',
+                                color: 'black',
+                                textDecoration: 'none'
+                            }} href='#order' onClick={() => {
                                     const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
                                     const index = arr.findIndex(el => el.config.configurationId == selectedConfig?.configurationId)
 
@@ -248,13 +252,30 @@ const Product = (
                                     }
                                     sessionStorage.setItem("cart", JSON.stringify(arr))
                                     window.dispatchEvent(new Event("storage"));
-                                }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></button>
+                                }} className={styles.toCart}>В корзину <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></a>
                                 <p>{selectedConfig?.totalPrice.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0}).replace(',', '.')} ₽</p>
                             </>
-                            : <Link style={{
-                                fontSize: "18px",
-                                color: 'black'
-                            }} href={"https://t.me/iamgavr"}>Связаться с нами</Link>
+                            : <a style={{
+                                cursor: 'pointer',
+                                color: 'black',
+                                textDecoration: 'none'
+                            }} href='#order' onClick={() => {
+                                const arr: Array<any> = JSON.parse(sessionStorage.getItem("cart") || "[]")
+                                const index = arr.findIndex(el => el.config.configurationId == selectedConfig?.configurationId)
+
+                                if (index >= 0) {
+                                    arr[index].count++
+                                } else {
+                                    arr.push({
+                                        name: productState.name,
+                                        config: selectedConfig,
+                                        img: imgList[0]
+                                    })
+                                    arr[arr.length - 1].count = 1
+                                }
+                                sessionStorage.setItem("cart", JSON.stringify(arr))
+                                window.dispatchEvent(new Event("storage"));
+                            }} className={styles.toCart}>Под заказ <Image src={'/arrow-right-black.svg'} alt='стрелка направо (кнопка добавить в корзину)' width={32} height={10} color='#000' /></a>
                     }
                 </div>
             </div>

@@ -29,7 +29,7 @@ const Cart = () => {
     return (
         <>
             <Order cart={cart} />
-            <div style={{
+            {Boolean(cart.length) && <div style={{
             }} className={styles.wrp}>
                 <a href='#order' className={`${styles.cart} ${animate ? styles.anim : ""}`}>
                     <div className={styles.tooltip}>
@@ -37,7 +37,7 @@ const Cart = () => {
                     </div>
                     <Image src={'/cart.svg'} alt='корзина иконка' width={27} height={27} />
                 </a>
-            </div>
+            </div>}
         </>
     )
 }

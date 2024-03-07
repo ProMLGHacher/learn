@@ -64,11 +64,7 @@
 @media screen and (max-width: adaptive.$sm) {
     .main {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-}
 
-@media screen and (max-width: adaptive.$sm) {
-    .main {
         &>div {
             padding: calc(var(--padding) * 7);
         }

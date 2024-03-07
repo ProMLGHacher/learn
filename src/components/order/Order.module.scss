@@ -88,12 +88,13 @@
 .edit {
     margin-bottom: 21px;
 
-    &>select {
+    &>div>select {
         border-radius: 10px;
         border: 1px solid #9A9A9A;
         padding: 20px 24px;
         width: 100%;
         appearance: none;
+        
     }
 
     &>input {

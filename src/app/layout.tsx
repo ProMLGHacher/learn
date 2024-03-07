@@ -17,6 +17,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <head>
+        <meta name="google-site-verification" content="_Mcxgv_53f7moh5Uxh3zrNW-5tHyvS-Gv1-5y-yomTE" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+      </head>
       <body style={{
         fontFamily: SF.style.fontFamily
       }} className={SF.className}>
