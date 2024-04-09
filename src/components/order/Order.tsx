@@ -1,11 +1,9 @@
-'usr client';
-
 import styles from './Order.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { BASE_URL } from '@/utils/conts';
-import { redirect, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 type PromoCodeType = "DiscountAmount" | "DiscountPercentage"
 
