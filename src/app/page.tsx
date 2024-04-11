@@ -8,11 +8,13 @@ import './responsive.scss'
 import Footer from '@/components/landing/footer/Footer'
 import { Suspense } from 'react'
 import TradeInPopUp from '@/components/tradein/TradeIn'
+import PromoCodePopUp from '@/components/promoceodepopup/PromoCodePopUp'
+import Foundalowerprice from '@/components/foundalowerprice/foundalowerprice'
 
 export default function Home() {
   return (
     <>
-      <TradeInPopUp />
+
       <main className={styles.main}>
         <FirstSection />
         <Categories />

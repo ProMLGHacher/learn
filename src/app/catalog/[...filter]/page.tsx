@@ -10,6 +10,8 @@ import { redirect } from 'next/navigation'
 
 const getProducts = async (category: string, filter: string | undefined) => {
 
+    
+
     const data = await fetch(`${BASE_URL}/api/products?deviceModel=${filter || category}`, {
         next: {
             revalidate: 86_400,

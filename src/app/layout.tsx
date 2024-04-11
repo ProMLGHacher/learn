@@ -3,6 +3,9 @@ import './globals.scss'
 import TopHeader from '@/components/TopHeader/TopHeader'
 import Header from '@/components/Header/Header'
 import { SF } from './fonts/font'
+import Foundalowerprice from '@/components/foundalowerprice/foundalowerprice'
+import PromoCodePopUp from '@/components/promoceodepopup/PromoCodePopUp'
+import TradeInPopUp from '@/components/tradein/TradeIn'
 
 export const metadata: Metadata = {
   title: 'iStore в Оренбурге: Оригинальная Техника Apple и Лучшие Цены на iPhone с Бесплатной Доставкой',
@@ -19,11 +22,14 @@ export default function RootLayout({
     <html lang="ru">
       <head>
         <meta name="google-site-verification" content="_Mcxgv_53f7moh5Uxh3zrNW-5tHyvS-Gv1-5y-yomTE" />
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8"></meta>
       </head>
       <body style={{
         fontFamily: SF.style.fontFamily
       }} className={SF.className}>
+        <TradeInPopUp />
+        <PromoCodePopUp />
+        <Foundalowerprice />
         <TopHeader />
         <Header />
         {children}
