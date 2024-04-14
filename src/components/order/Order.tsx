@@ -46,6 +46,8 @@ const Order = (props: {
 
     const [price, setPrice] = useState(props.cart.reduce((acc, el) => acc += el.config.totalPrice * (el.count ? el.count : 0), 0))
 
+    
+
     useEffect(() => {
         setPrice(props.cart.reduce((acc, el) => acc += el.config.totalPrice * (el.count ? el.count : 0), 0))
         if (!promoCodeStatus.error && promoCodeStatus.value) {
@@ -261,9 +263,9 @@ const Order = (props: {
                                 alignItems: 'center'
                             }}>
                                 <Image src={'/search.svg'} alt='нашли цену ниже иконка' width={16} height={16} />
-                                <Link href={'https://t.me/iamgavr'} style={{
+                                <a href={'#foundalowerprice'} style={{
                                     color: 'rgba(0, 0, 0, 0.4)'
-                                }}>Нашли цену ниже?</Link>
+                                }}>Нашли цену ниже?</a>
                             </div>
                             {
                                 promoCodeStatus.error == true && <p className={styles.promoStatus}>{`${"Промокод не существует"}`}</p>

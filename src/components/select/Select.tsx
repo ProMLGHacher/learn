@@ -4,6 +4,7 @@ import Image from 'next/image'
 import styles from './Select.module.scss'
 import { usePathname } from 'next/navigation';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 const Select = (props: {
     caregory: string,
@@ -13,6 +14,8 @@ const Select = (props: {
     const pathname = usePathname()
     const filter = (pathname.split('/')[3] || 'all').replace('%20', ' ')
 
+    const router = useRouter()
+
     
 
 
@@ -20,7 +23,7 @@ const Select = (props: {
         <div className={styles.dropdown}>
             <Image src={'/dropdown-icon.svg'} alt='стрелка на право (фильтры категории)' width={20} height={20} />
             <select title='filter' onChange={(e) => {
-                location.pathname = `/catalog/${props.caregory}/${e.target.value}`
+                router.push(`/catalog/${props.caregory}/${e.target.value}`)
             }} defaultValue={filter || ""} className={styles.categoryFilter}>
                 <option value={""}>Всё</option>
                 {

@@ -4,6 +4,8 @@ import styles from './foundalowerprice.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { BASE_URL } from '@/utils/conts';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -16,8 +18,25 @@ const Foundalowerprice = () => {
 
     const submit = useCallback(async (e: any) => {
         e?.preventDefault()
-
-    }, [])
+        fetch(BASE_URL + '/api/request-for-change-cost', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+                "fullname": fio,
+                "phone": phone,
+                "deviceModel": model,
+                "urlToOtherStore": link
+            })
+        })
+            .then(e => {
+                if (e.status == 200) {
+                    window.location.href = '/'
+                }
+            })
+    }, [phone, fio, model, link])
 
     return (
         <>

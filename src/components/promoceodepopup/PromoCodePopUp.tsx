@@ -4,6 +4,8 @@ import styles from './PromoCodePopUp.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { BASE_URL } from '@/utils/conts';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -14,7 +16,41 @@ const PromoCodePopUp = () => {
 
     const submit = useCallback(async (e: any) => {
         e?.preventDefault()
+        fetch(BASE_URL + '/api/discount', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+                "phone": phone,
+                "fullname": fio
+            })
+        })
+            .then(e => {
+                if (e.status == 200) {
+                    window.location.href = '/'
+                }
+            })
+    }, [phone, fio])
 
+    useEffect(() => {
+        let times = 0
+
+        const increment = () => {
+            setTimeout(() => {
+                console.log(times);
+                
+                if (times>=60) {
+                    window.location.href = '#promocodepopup'
+                } else {
+                    times += 1
+                    increment()
+                }
+            }, 1000)
+        }
+
+        increment()
     }, [])
 
     return (

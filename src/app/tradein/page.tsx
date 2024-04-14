@@ -15,7 +15,7 @@ const page = () => {
                         <h1 className={styles.h1}>Trade-IN</h1>
                         <h5 className={styles.h5}>Это умный, удобный и экологичный способ покупки новых устройств. Теперь вам есть куда принести свои устройства Apple, которые вы решили обновить, получить при этом выгоду себе и принести пользу окружающей среде.</h5>
                     </div>
-                    <Link href={'/contacts'} className={`tap`} style={{
+                    <a href={'#tradeinpopup'} className={`tap`} style={{
                         textDecoration: 'none',
                         padding: '12px 24px',
                         backgroundColor: 'transparent',
@@ -29,9 +29,9 @@ const page = () => {
                         gap: '8px',
                         cursor: 'pointer',
                         marginTop: '30px',
-                    }}>Консультация <Image style={{
+                    }}>Заявка <Image style={{
                         filter: 'invert(100%)'
-                    }} src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></Link>
+                    }} src={'/arrow-right.svg'} alt='right arrow in by button' width={33} height={6} /></a>
                 </div>
                 <Image className={styles.img} src={'/iphone_12.png'} alt='apple vision pro image' width={703} height={538} />
             </div>

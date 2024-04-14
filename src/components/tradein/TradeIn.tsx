@@ -4,6 +4,8 @@ import styles from './TradeIn.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import { BASE_URL } from '@/utils/conts';
+import { useRouter } from 'next/navigation';
 
 
 
@@ -15,10 +17,31 @@ const TradeInPopUp = () => {
     const [displayCondition, setDisplayCondition] = useState("")
     const [battaryCondition, setBattaryCondition] = useState("")
 
+    const router = useRouter()
+
+
     const submit = useCallback(async (e: any) => {
         e?.preventDefault()
-
-    }, [])
+        fetch(BASE_URL + '/api/trade-in/request', {
+            method: 'POST',
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+                "phone": phone,
+                "deviceModel": phoneModel,
+                "corpusState": bodyCondition,
+                "displayState": displayCondition,
+                "batteryState": battaryCondition
+            })
+        })
+        .then(e => {
+            if (e.status == 200) {
+                window.location.href = '/'
+            }
+        })
+    }, [phoneModel, phone, bodyCondition, displayCondition, battaryCondition])
 
     return (
         <>
@@ -53,6 +76,12 @@ const TradeInPopUp = () => {
                             </div>
                             <div className={styles.edit}>
                                 <p>Состояние дисплея</p>
+                                <input value={displayCondition} onChange={(e) => {
+                                        setDisplayCondition(e.target.value)
+                                    }} type="text" />
+                            </div>
+                            {/* <div className={styles.edit}>
+                                <p>Состояние дисплея</p>
                                 <div style={{
                                     position: 'relative',
                                     display: 'flex',
@@ -71,8 +100,14 @@ const TradeInPopUp = () => {
                                         pointerEvents: 'none'
                                     }} src={'/dropdown-icon.svg'} alt='' width={16} height={16} />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className={styles.edit}>
+                                <p>Состояние аккумулятора</p>
+                                <input value={battaryCondition} onChange={(e) => {
+                                        setBattaryCondition(e.target.value)
+                                    }} type="text" />
+                            </div>
+                            {/* <div className={styles.edit}>
                                 <p>Состояние аккумулятора</p>
                                 <div style={{
                                     position: 'relative',
@@ -92,7 +127,7 @@ const TradeInPopUp = () => {
                                         pointerEvents: 'none'
                                     }} src={'/dropdown-icon.svg'} alt='' width={16} height={16} />
                                 </div>
-                            </div>
+                            </div> */}
                             <button onClick={submit} className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
                             <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={'/policy.pdf'}>персональных данных</Link></p>
                         </form>
