@@ -39,8 +39,8 @@ const PromoCodePopUp = () => {
         const increment = () => {
             setTimeout(() => {
                 console.log(times);
-                
-                if (times>=60) {
+
+                if (times >= 3) {
                     window.location.href = '#promocodepopup'
                 } else {
                     times += 1
@@ -80,17 +80,13 @@ const PromoCodePopUp = () => {
                             <button onClick={submit} className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
                             <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={'/policy.pdf'}>персональных данных</Link></p>
                         </form>
-                        <div style={{
-                            position: 'relative'
-                        }} className={styles.reverse}>
-
-                        </div>
                         <img className={styles.image} style={{
-                            width: '20%',
+                            width: '27%',
                             objectFit: 'contain',
                             objectPosition: 'right',
                             position: 'absolute',
                             right: '0',
+                            bottom: '0'
                         }} src="/tradeinpopup.png" alt="" />
                     </div>
                 </div>
