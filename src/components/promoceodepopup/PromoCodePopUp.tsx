@@ -5,13 +5,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { BASE_URL } from '@/utils/conts';
-import { useRouter } from 'next/navigation';
 
 
 
 const PromoCodePopUp = () => {
 
-    const [phone, setPhone] = useState('')
+    const [email, setEmail] = useState('')
     const [fio, setFio] = useState("")
 
     const submit = useCallback(async (e: any) => {
@@ -23,7 +22,7 @@ const PromoCodePopUp = () => {
             },
             mode: 'cors',
             body: JSON.stringify({
-                "phone": phone,
+                "email": email,
                 "fullname": fio
             })
         })
@@ -32,7 +31,7 @@ const PromoCodePopUp = () => {
                     window.location.href = '/'
                 }
             })
-    }, [phone, fio])
+    }, [email, fio])
 
     useEffect(() => {
         let times = 0
@@ -73,10 +72,10 @@ const PromoCodePopUp = () => {
                                 }} required autoComplete='name' />
                             </div>
                             <div className={styles.edit}>
-                                <p>Телефон<span className={styles.red}>*</span></p>
-                                <input value={phone} onChange={(e) => {
-                                    setPhone(e.target.value)
-                                }} required type="tel" />
+                                <p>Почта<span className={styles.red}>*</span></p>
+                                <input value={email} onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }} required type="email" />
                             </div>
                             <button onClick={submit} className={`${styles.submit} tap`} type='submit'>Отправить <Image src={'/arrow-right-black.svg'} alt='отправить стрелка' width={32} height={7} /></button>
                             <p className={styles.personalData}>Нажимая на кнопку, вы даете согласие на обработку <Link href={'/policy.pdf'}>персональных данных</Link></p>
